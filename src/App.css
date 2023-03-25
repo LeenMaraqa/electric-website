@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500&family=Courgette&family=Paprika&family=Readex+Pro&display=swap");
+
+
+.App {
+  font-family: "Cairo", sans-serif;
+  font-family: "Courgette", cursive;
+  font-family: "Paprika", cursive;
+  font-family: "Readex Pro", sans-serif;
+
+}
+/* @media screen and (max-width: 992px) {
+  body {
+
+  }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+/* @media screen and (max-width: 600px) {
+  body {
+  
+  }
+}
+@media screen and (max-width: 600px) {
+  .body  {
+
+  }
+} */ 

@@ -1,0 +1,28 @@
+.eservices-component{
+    margin: 50px;
+    width: auto;
+    height: 400px;
+    direction: rtl;
+}
+.wrapper-eservice{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.wrapper-eservice>div{
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.title{
+    font-weight: 700;
+    font-size: large;
+    margin: 10px;
+}
+.title :hover{
+    color: #f47629;
+}
+/* h3{
+    color: #f47629 ;
+} */

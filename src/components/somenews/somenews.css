@@ -1,0 +1,31 @@
+.somenews{
+    margin: 100px;
+    width: auto;
+    height: 800px;
+    direction: rtl;
+}
+.news {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 1000px;
+    align-items: center;
+}
+.news>div{
+    width: 1100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.title{
+    font-weight: 700;
+    font-size: large;
+    margin: 10px;
+}
+.title :hover{
+    color: #f47629;
+}
+.example>div{
+    display: flex;
+    flex-direction: column;
+}

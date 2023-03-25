@@ -1,0 +1,8 @@
+.send-btn button{
+    width: 700px;
+    
+}
+.send-btn{
+    display: flex;
+    justify-content: center;}
+    
