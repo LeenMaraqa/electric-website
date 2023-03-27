@@ -24,14 +24,22 @@ const MainForm = (props) => {
   const [beneficiaryIDImage, setBeneficiaryIDImage] = useState();
   const [footPrint, setFootPrint] = useState();
   const [locationImage, setLocationImage] = useState();
-  let formData =new FormData();
+
+  const formData = new FormData();
   const handleInput = (e) => {
     const { name, value } = e.target;
     setAppInfo({ ...appInfo, [name]: value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    if (props.type == "نقل الاعمدة المعارضة") {
+      formData.append("footPrintImage", footPrint);
+      formData.append("poleImage", locationImage);
+    }
+    else if (props.type == "تعديل بيانات المستفيد") {
+      formData.append("beneficiaryID", beneficiaryIDImage);
+      formData.append("userID", userIDImage);
+    }
     const appValue = {
       username: appInfo.username,
       phoneNum: appInfo.phonenumber,
@@ -49,21 +57,18 @@ const MainForm = (props) => {
       footPrint: footPrint,
       locationImage: locationImage,
     };
-
     let res = await fetch("https://my.api.mockaroo.com/app.json", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(appValue),
     });
-    
+
     let resjson = await res.json();
     console.log("res : ", res);
-    // console.log("resjson : ", resjson);
     console.log("appvalue :", appValue);
-    // e.target.reset();
-  //  setAppInfo("");
-    
   };
+
+  // https://my.api.mockaroo.com/app.json
   return (
     <div className="main-app">
       <form onSubmit={handleSubmit}>
@@ -129,7 +134,7 @@ const MainForm = (props) => {
             />
           </div>
         )}
-        {props.type == "TemporaryToPermanent" && (
+        {props.type == "تحويل من مؤقت الى دائم" && (
           <div className="optional">
             <label>
               <b> اسم مهندس الكهرباء </b>
@@ -155,7 +160,7 @@ const MainForm = (props) => {
             />
           </div>
         )}
-        {props.type == "ModifyData" && (
+        {props.type == "تعديل بيانات المستفيد" && (
           <div>
             <div className="optional">
               <label>
@@ -176,12 +181,9 @@ const MainForm = (props) => {
               </label>
               <input
                 className=""
-                // name="electricianName"
-                // value={appInfo.electricianName}
                 onChange={(event) => {
-                  const file = event.target.files[0];
-                  setUserIDImage(file);
-                  // formData.append('file',event.target.files[0]);
+                  const userID = event.target.files[0];
+                  setUserIDImage(userID);
                 }}
                 type="file"
                 placeholder=""
@@ -194,12 +196,9 @@ const MainForm = (props) => {
               </label>
               <input
                 className=""
-                // name="electricianName"
-                // value={appInfo.electricianName}
                 onChange={(event) => {
-                  const file = event.target.files[0];
-                  setBeneficiaryIDImage(file);
-                  // formData.append('file',event.target.files[0]);
+                  const beneficiaryID = event.target.files[0];
+                  setBeneficiaryIDImage(beneficiaryID);
                 }}
                 type="file"
                 placeholder=""
@@ -208,7 +207,8 @@ const MainForm = (props) => {
             </div>
           </div>
         )}
-        {props.type == "TransferPoles" && (
+
+        {props.type == "نقل الاعمدة المعارضة" && (
           <div className="optional">
             <div>
               {" "}
@@ -217,12 +217,9 @@ const MainForm = (props) => {
               </label>
               <input
                 className=""
-                // name="electricianName"
-                // value={appInfo.electricianName}
                 onChange={(event) => {
-                  const file = event.target.files[0];
-                  setLocationImage(file);
-                  // formData.append('file',event.target.files[0]);
+                  const poleImage = event.target.files[0];
+                  setLocationImage(poleImage);
                 }}
                 type="file"
                 placeholder=""
@@ -236,23 +233,19 @@ const MainForm = (props) => {
               </label>
               <input
                 className=""
-                // name="electricianPhoneNumber"
-                // value={appInfo.electricianPhoneNumber}
-                onChange={event =>{
-                  const file =event.target.files[0];
-                  setFootPrint (file);
-                  // formData.append('file',event.target.files[0]);
+                onChange={(event) => {
+                  const footPrintImage = event.target.files[0];
+                  setFootPrint(footPrintImage);
                 }}
                 type="file"
                 placeholder=""
                 accept="image/jpeg, image/png"
-
               />
             </div>
           </div>
         )}
         <div className="send-btn">
-          <button className="button-5" type="submit" >
+          <button className="button-5" type="submit">
             ارسال
           </button>
         </div>

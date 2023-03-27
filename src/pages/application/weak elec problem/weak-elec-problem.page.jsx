@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../../../components/main form/main-form.css";
 import "../check elec meter/check-elec-meter.css";
 const WeakElecProblem = () => {
-  const type = "Weak Elec Problem";
+  const type = "معالجة ضعف التيار";
   const reason = "sth";
   
   return (

@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../../../components/main form/main-form.css";
 import "../check elec meter/check-elec-meter.css";
 const TemporaryToPermanent = () => {
-  const type = "TemporaryToPermanent";
+  const type = "تحويل من مؤقت الى دائم";
   const reason = "sth";
 
   return (

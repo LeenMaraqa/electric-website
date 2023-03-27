@@ -5,7 +5,7 @@ import "../../../components/main form/main-form.css";
 import "./check-elec-meter.css";
 const CheckElecMeter = () => {
  
-  const type = "checkElecMeter";
+  const type = "فحص عداد";
   return (
     <div className="check-elec-meter">
       <div className="aboutapp">

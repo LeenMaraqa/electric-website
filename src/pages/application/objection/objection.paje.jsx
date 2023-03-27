@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../../../components/main form/main-form.css";
 import "../check elec meter/check-elec-meter.css";
 const Objection = () => {
-  const type = "Objection";
+  const type = "اعتراض على تقدير بدل استهلاك";
   const reason = "sth";
   return (
     <div className="check-elec-meter">

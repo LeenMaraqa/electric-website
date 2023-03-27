@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../../../components/main form/main-form.css";
 import "../check elec meter/check-elec-meter.css";
 const StreetLighting = () => {
-  const type = "intall street lighting";
+  const type = "تركيب انارة للشارع";
   return (
     <div className="check-elec-meter">
       <div className="aboutapp">
