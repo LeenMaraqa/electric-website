@@ -2,7 +2,6 @@ import "./header.css";
 import logo from "../../images/logo.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { MapPin, PhoneCall, EnvelopeSimple } from "phosphor-react";
-import slide3 from "../../images/slide3.jpg";
 
 const Header = () => {
   return (

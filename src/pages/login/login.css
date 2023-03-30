@@ -1,43 +1,45 @@
-.login-page{
-    display: flex;
-    align-items: center;
-    align-content: space-between;
-    justify-content: center;
-    height: 400px;
-    direction: rtl;
-    
+.login-page {
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  justify-content: center;
+  /* height: 400px; */
+  direction: rtl;
 }
-/* .login-form{
-  width: 500px;
-} */
-input[type=number], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 25px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    
-  }
-  
-  /* Set a style for all buttons */
-  .button-5{
-    width: 100%;
-  }
-  h2{
-    text-align: center;
-  }
-  button {
-    background-color: #f47629 
-    ;
+
+.login-field input[type="number"],
+input[type="password"] {
+  width: 550px;
+  padding: 12px 20px;
+  margin: 25px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-submit .button-5 {
+  width: 40%;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #f47629;
+}
+h2 {
+  text-align: center;
+}
+/* button {
+    background-color: #f47629 ;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
-  }
-  
-  button:hover {
+  } */
+
+/* button:hover {
     opacity: 0.8;
-  }
+  } */

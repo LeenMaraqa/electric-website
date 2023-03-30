@@ -1,28 +1,29 @@
-.main-app{
-    display: flex;
-    justify-content: space-evenly;
-    /* height: 500px; */
-    align-items: center;
-
+.main-app {
+  display: flex;
+  justify-content: space-evenly;
+  /* height: 500px; */
+  align-items: center;
 }
 .main-form {
-    direction: rtl;
-    width: 700px;
-    display: flex;
-    flex-direction: column;
-
+  direction: rtl;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
 }
-.main-form input[type=number], input[type=text],input[type=file],input[type=image] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 25px 0;
-    display: inline-block;
-    /* border: 1px solid #ccc; */
-    box-sizing: border-box;
-  }
-  .optional{
-    direction: rtl;
-  }
+.main-form input[type="number"],
+input[type="text"],
+input[type="file"],
+input[type="image"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 25px 0;
+  display: inline-block;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+}
+.optional {
+  direction: rtl;
+}
 /*   
   .main-form input[type=submit] {
     width: 100%;

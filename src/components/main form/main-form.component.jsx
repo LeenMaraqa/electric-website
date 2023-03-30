@@ -19,7 +19,7 @@ const MainForm = (props) => {
     // locationImage: "",
     serviceID: "",
   });
-  const [msg, setMsg] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
   const [userIDImage, setUserIDImage] = useState();
   const [beneficiaryIDImage, setBeneficiaryIDImage] = useState();
   const [footPrint, setFootPrint] = useState();
@@ -35,8 +35,7 @@ const MainForm = (props) => {
     if (props.type == "نقل الاعمدة المعارضة") {
       formData.append("footPrintImage", footPrint);
       formData.append("poleImage", locationImage);
-    }
-    else if (props.type == "تعديل بيانات المستفيد") {
+    } else if (props.type == "تعديل بيانات المستفيد") {
       formData.append("beneficiaryID", beneficiaryIDImage);
       formData.append("userID", userIDImage);
     }
@@ -57,17 +56,24 @@ const MainForm = (props) => {
       footPrint: footPrint,
       locationImage: locationImage,
     };
-    let res = await fetch("https://my.api.mockaroo.com/app.json", {
+       // change API
+    let response = await fetch("https://my.api.mockaroo.com/app.json", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(appValue),
     });
 
-    let resjson = await res.json();
-    console.log("res : ", res);
-    console.log("appvalue :", appValue);
-  };
+    console.log("response : ", response);
+    console.log("appvalue : ", appValue);
 
+    if (response.status === 200) {
+      alert("تم ارسال طلبك بنجاح");
+    } else {
+      const errorData = await response.json();
+      setErrorMessage(errorData.message);
+      console.log(errorData.message);
+    }
+  };
   // https://my.api.mockaroo.com/app.json
   return (
     <div className="main-app">
@@ -219,6 +225,7 @@ const MainForm = (props) => {
                 className=""
                 onChange={(event) => {
                   const poleImage = event.target.files[0];
+                  // console.log("poleImage",poleImage);
                   setLocationImage(poleImage);
                 }}
                 type="file"
