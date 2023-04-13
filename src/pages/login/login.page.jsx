@@ -1,82 +1,65 @@
-import { useNavigate } from "react-router-dom";
+import LoginForm from "../../components/login-form/login-form.component";
+import CSE_Dashboard from "../CSE-Dashboard/CSE-Dashboard.page";
 import "./login.css";
-import { useRef, useState } from "react";
-import login from "../../images/login.jpg";
-const LoginPage = () => {
-  const userIDRef = useRef();
-  const userPasswordRef = useRef();
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    console.log({
-      id: userIDRef.current.value,
-      password: userPasswordRef.current.value,
-    });
-    const userID = userIDRef.current.value;
-    const userPassword = userPasswordRef.current.value;
-    // change API
-    const response = await fetch("https://my.api.mockaroo.com/app.json", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userID, userPassword }),
-    });
-    if (response.ok) {
-      alert("welcome <> ");
-      // navigate("/home");
-    } else {
-      const errorData = await response.json();
-      setErrorMessage(errorData.message);
-      console.log(errorData.message);
-      alert("Error <> ");
+import Header from "../../components/header/header.component";
+
+const LoginPage = ({ onLogin = () => {} }) => {
+  console.log("onLogin: ", onLogin);
+  console.log("4");
+  const handleLogin = async (id, password) => {
+    if (typeof onLogin !== "function") {
+      console.log("onLogin is not a function");
+      console.log("5");
+      throw new Error("onLogin is not a function");
+      console.log("6");
+    }
+    try {
+      console.log("7");
+      const response = await fetch(
+        "https://my.api.mockaroo.com/users.json?key=6b7de8e0&__method=POST",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id, password }),
+        }
+      );
+      console.log("8");
+      const { token, role } = await response.json();
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      console.log("9");
+      onLogin();
+      console.log("10");
+      if (response.status === 200) {
+        console.log("Login successful");
+      } else {
+        console.log("Login failed");
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
+  const role = localStorage.getItem("role");
+
+  {
+    role === "Admin" ? (
+      console.log("admin") // <AdminPage />
+    ) : role === "user" ? (
+      console.log("admin") // <UserPage />
+    ) : role === "CSE" ? (
+      <CSE_Dashboard />
+    ) : (
+      <LoginPage onLogin={() => window.location.reload()} />
+    );
+  }
 
   return (
-    <div className="login-page">
-      <div className="slider-part">
-        {/* <img src={login} alt="" width={1000} /> */}
-      </div>
-
-      <form onSubmit={handleLogin} className="login-form">
-        <div>
-          {" "}
-          <h2>تسجيل الدخول</h2>
-        </div>
-        <div className="login-field">
-          <label>
-            <b>رقم الهوية</b>
-          </label>
-          <input
-            className="login-input"
-            name="IDNumber"
-            type="number"
-            placeholder="رقم الهوية"
-            ref={userIDRef}
-            required
-          />
-          <label>
-            <b>كلمة المرور </b>
-          </label>
-          <input
-            className="login-input"
-            name="password"
-            type="password"
-            placeholder="كلمة المرور "
-            ref={userPasswordRef}
-            required
-          />
-        </div>
-        <div className="login-submit">
-          <button className="button-5" type="submit">
-            تسجيل الدخول
-          </button>
-        </div>
-      </form>
+    <div>
+      <Header />
+      <LoginForm onLogin={handleLogin} />
     </div>
   );
 };
-
 export default LoginPage;

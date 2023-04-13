@@ -1,13 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import Header from "./components/header/header.component";
+// import Header from "./components/header/header.component";
 import Home from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
+import EmpLoginPage from "./pages/emp-login/Emp-login.page";
 import EservicesPage from "./pages/E-services-page/eservices.page";
 import MainForm from "./components/main form/main-form.component";
-import MainApp from "./pages/mainapp/mainapp.page";
-import SecApp from "./pages/secondaryapp/secondaryapp.page";
 import CheckElecMeter from "./pages/application/check elec meter/check-elec-meter.page";
 import BillToCard from "./pages/application/bill to card/bill-to-card.page";
 import StreetLighting from "./pages/application/install street lighting/street-lighting.page";
@@ -20,17 +19,18 @@ import TemporaryToPermanent from "./pages/application/temporary to permanent/tem
 import ModifyData from "./pages/application/modify-beneficiarys-data/modify-data.page";
 import TransferPoles from "./pages/application/transfer poles/transfer-poles.page";
 import Footer from "./components/footer/footer.component";
+import CSE_Dashboard from "./pages/CSE-Dashboard/CSE-Dashboard.page";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
-
+        {/* <Header /> */}
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="/" element={<Home />} />
           <Route path="eservices" element={<EservicesPage />} />
           <Route path="login" element={<LoginPage />} />
+          {/* <Route path="emp/login" element={<EmpLoginPage />} /> */}
           <Route path="/checkElectricityMeter" element={<CheckElecMeter />} />
           <Route path="/billToCard" element={<BillToCard />} />
           <Route path="/streetLighting" element={<StreetLighting />} />
@@ -39,9 +39,13 @@ function App() {
           <Route path="/objection" element={<Objection />} />
           <Route path="/maintenance" element={<Maintenance />} />
           <Route path="/reduceInstallment" element={<ReduceInstallment />} />
-          <Route path="/temporaryToPermanent" element={<TemporaryToPermanent />} />
+          <Route
+            path="/temporaryToPermanent"
+            element={<TemporaryToPermanent />}
+          />
           <Route path="/modifybeneficiarysdata" element={<ModifyData />} />
           <Route path="/transferpoles" element={<TransferPoles />} />
+          <Route path="/CSE_Dashboard" element={<CSE_Dashboard />} />
 
           {/* <Route path="mainApp" element={<MainApp />} />
           <Route path="secondaryApp" element={<SecApp />} /> */}

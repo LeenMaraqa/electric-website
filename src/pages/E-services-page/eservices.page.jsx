@@ -11,10 +11,12 @@ import serv10 from "../../images/s10.png";
 import servicesImage from "../../images/servicespage.png";
 import "./eservices.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import Header from "../../components/header/header.component";
 const EservicesPage = () => {
   return (
     <div className="eservices-page">
+              <Header />
+
       <div className="about-services">
         <img src={servicesImage} alt="" />
         <div>

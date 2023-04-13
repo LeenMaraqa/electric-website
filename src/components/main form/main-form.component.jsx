@@ -5,76 +5,117 @@ const MainForm = (props) => {
     username: "",
     phonenumber: "",
     address: "",
-    date: new Date().toDateString() + " " + new Date().toLocaleTimeString(),
-    appStatus: "new",
+    //date: new Date().toDateString() + " " + new Date().toLocaleTimeString(),
+    appStatus: "جديد",
     appType: props.type,
     reason: "",
-    // userIDImage: "",
-    // beneficiaryIDImage: "",
+    userIDImage: null,
+    beneficiaryIDImage: null,
     beneficiaryName: "",
     electricianName: "",
     electricianPhoneNumber: "",
-    polesLocation: "",
-    // footPrint: "",
-    // locationImage: "",
+    footPrint: null,
+    locationImage: null,
     serviceID: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const [userIDImage, setUserIDImage] = useState();
-  const [beneficiaryIDImage, setBeneficiaryIDImage] = useState();
-  const [footPrint, setFootPrint] = useState();
-  const [locationImage, setLocationImage] = useState();
-
   const formData = new FormData();
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setAppInfo({ ...appInfo, [name]: value });
   };
+  const handleImageChange = (e) => {
+    const { name, files } = e.target;
+    setAppInfo((prevState) => ({
+      ...prevState,
+      [name]: files[0],
+    }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (props.type == "نقل الاعمدة المعارضة") {
-      formData.append("footPrintImage", footPrint);
-      formData.append("poleImage", locationImage);
-    } else if (props.type == "تعديل بيانات المستفيد") {
-      formData.append("beneficiaryID", beneficiaryIDImage);
-      formData.append("userID", userIDImage);
+    const {
+      username,
+      phonenumber,
+      address,
+      appStatus,
+      appType,
+      reason,
+      userIDImage,
+      beneficiaryIDImage,
+      beneficiaryName,
+      electricianName,
+      electricianPhoneNumber,
+      footPrint,
+      locationImage,
+      serviceID,
+    } = appInfo;
+
+    if (
+      props.type == "نقل الاعمدة المعارضة" ||
+      props.type == "تعديل بيانات المستفيد"
+    ) {
+      const formDataToSend = new FormData();
+      formDataToSend.append("username", username);
+      formDataToSend.append("phonenumber", phonenumber);
+      formDataToSend.append("address", address);
+      formDataToSend.append("appStatus", appStatus);
+      formDataToSend.append("appType", appType);
+      formDataToSend.append("reason", reason);
+      formDataToSend.append("userIDImage", userIDImage);
+      formDataToSend.append("beneficiaryIDImage", beneficiaryIDImage);
+      formDataToSend.append("beneficiaryName", beneficiaryName);
+      //formDataToSend.append("polesLocation", polesLocation);
+      formDataToSend.append("footPrint", footPrint);
+      formDataToSend.append("locationImage", locationImage);
+      formDataToSend.append("serviceID", serviceID);
+
+      try {
+        const response = await fetch(
+          "https://my.api.mockaroo.com/formdata.json?key=6b7de8e0&__method=POST",
+          {
+            method: "POST",
+            body: formDataToSend,
+          }
+        );
+
+        console.log("response : ", response);
+        console.log("appInfo : ", appInfo);
+
+        if (response.ok) {
+          alert("تم ارسال طلبك بنجاح");
+        } else {
+          alert("حدثت مشكلة في ارسال الطلب");
+        }
+      } catch (error) {
+        console.log("An error occurred while submitting the form:", error);
+      }
     }
-    const appValue = {
-      username: appInfo.username,
-      phoneNum: appInfo.phonenumber,
-      address: appInfo.address,
-      appType: props.type,
-      appStatus: appInfo.appStatus,
-      date: appInfo.date,
-      reason: appInfo.reason,
-      electricianName: appInfo.electricianName,
-      electricianPhoneNumber: appInfo.electricianPhoneNumber,
-      beneficiaryName: appInfo.beneficiaryName,
-      serviceID: appInfo.serviceID,
-      userIDImage: userIDImage,
-      beneficiaryIDImage: beneficiaryIDImage,
-      footPrint: footPrint,
-      locationImage: locationImage,
-    };
-       // change API
-    let response = await fetch("https://my.api.mockaroo.com/app.json", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(appValue),
-    });
+    // change API
+    else {
+      try {
+        const response = await fetch(
+          "https://my.api.mockaroo.com/formdata.json?key=6b7de8e0&__method=POST",
+          {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(appInfo),
+          }
+        );
 
-    console.log("response : ", response);
-    console.log("appvalue : ", appValue);
+        console.log("response : ", response);
+        console.log("appInfo : ", appInfo);
 
-    if (response.status === 200) {
-      alert("تم ارسال طلبك بنجاح");
-    } else {
-      const errorData = await response.json();
-      setErrorMessage(errorData.message);
-      console.log(errorData.message);
+        if (response.status === 200) {
+          alert("تم ارسال طلبك بنجاح");
+        } else {
+          alert("حدثت مشكلة في ارسال الطلب");
+        }
+      } catch (error) {
+        console.log("An error occurred while submitting the form:", error);
+      }
     }
   };
-  // https://my.api.mockaroo.com/app.json
   return (
     <div className="main-app">
       <form onSubmit={handleSubmit}>
@@ -186,14 +227,11 @@ const MainForm = (props) => {
                 <b>يرجى ارفاق صورة هوية المشترك</b>
               </label>
               <input
-                className=""
-                onChange={(event) => {
-                  const userID = event.target.files[0];
-                  setUserIDImage(userID);
-                }}
-                type="file"
-                placeholder=""
                 accept="image/jpeg, image/png"
+                type="file"
+                id="userIDImage"
+                name="userIDImage"
+                onChange={handleImageChange}
               />
             </div>
             <div className="optional">
@@ -201,14 +239,11 @@ const MainForm = (props) => {
                 <b>يرجى ارفاق صورة هوية المستفيد</b>
               </label>
               <input
-                className=""
-                onChange={(event) => {
-                  const beneficiaryID = event.target.files[0];
-                  setBeneficiaryIDImage(beneficiaryID);
-                }}
-                type="file"
-                placeholder=""
                 accept="image/jpeg, image/png"
+                type="file"
+                id="beneficiaryIDImage"
+                name="beneficiaryIDImage"
+                onChange={handleImageChange}
               />
             </div>
           </div>
@@ -222,15 +257,11 @@ const MainForm = (props) => {
                 <b>يرجى ارفاق صورة توضح المشكلة </b>
               </label>
               <input
-                className=""
-                onChange={(event) => {
-                  const poleImage = event.target.files[0];
-                  // console.log("poleImage",poleImage);
-                  setLocationImage(poleImage);
-                }}
-                type="file"
-                placeholder=""
                 accept="image/jpeg, image/png"
+                type="file"
+                id="locationImage"
+                name="locationImage"
+                onChange={handleImageChange}
               />
             </div>
             <div>
@@ -239,14 +270,11 @@ const MainForm = (props) => {
                 <b>يرجى ارفاق مخطط المساحة </b>
               </label>
               <input
-                className=""
-                onChange={(event) => {
-                  const footPrintImage = event.target.files[0];
-                  setFootPrint(footPrintImage);
-                }}
-                type="file"
-                placeholder=""
                 accept="image/jpeg, image/png"
+                type="file"
+                id="footPrint"
+                name="footPrint"
+                onChange={handleImageChange}
               />
             </div>
           </div>
