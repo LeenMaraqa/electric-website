@@ -1,0 +1,154 @@
+/* body {
+    overflow-y: scroll;
+  } */
+.CSE-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative; /* new */
+  color: black;
+  width: 1110px;
+  direction: rtl;
+  margin: 20px;
+  margin-right: 200px;
+  background-color: whitesmoke;
+  /* overflow: auto; new */
+  /* direction: rtl; */
+}
+
+.info table {
+  /* overflow-y: auto; */
+
+  color: black;
+  width: 1050px;
+  direction: rtl;
+  text-align: center;
+  height: auto;
+  border-collapse: collapse;
+  font-size: 0.88em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin: 50px 0px;
+}
+
+.info table thead {
+  color: white;
+  font-weight: 700;
+  background-color: #007a6f;
+  height: 50px;
+  text-align: right;
+}
+
+table th {
+  padding: 12px 10px;
+}
+
+table td {
+  padding: 20px 0px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.CSE-header {
+  width: 1200px;
+  padding: 20px;
+  background-color: white;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 1000px;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+}
+
+.header-search input {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 400px;
+  border: 1px solid whitesmoke;
+  direction: rtl;
+}
+
+.header-search button {
+  background-color: #007a6f;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+}
+
+.header-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.header-user-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content {
+  background-color: whitesmoke;
+  height: 260px;
+}
+
+.overview-wrapper {
+  display: flex;
+  width: 1000px;
+  height: 260px;
+  align-content: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 40px;
+  /* margin-bottom: 150px; */
+}
+.quick-overview {
+  width: 220px;
+  height: 170px;
+  background-color: #ffffff;
+}
+
+.CSE-container .content .info {
+  width: 1070px;
+  background-color: white;
+}

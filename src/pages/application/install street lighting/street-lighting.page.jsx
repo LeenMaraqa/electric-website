@@ -10,7 +10,7 @@ const StreetLighting = () => {
        <Header/>
       <div className="aboutapp">
         <h2>طلب تركيب انارة للشارع </h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
+        <div>... عزيزي المشترك نرجو من حضرتك </div>
       </div>
       <MainForm type={type} />
     </div>

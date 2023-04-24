@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500&family=Courgette&family=Paprika&family=Readex+Pro&display=swap");
+.sidebar {
+  background-color: #007a6f;
+  width: 250px;
+  direction: rtl;
+  /* height: 625px; */
+  /* position: static; */
+  /* position: fixed; */
+  display: flex;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  flex-direction: column;
+  justify-content: space-around;
+  /* padding-top: 40px;
+    padding-bottom: 40px; */
+  color: white;
+  /* overflow: visible; */
+  /* overflow-y: auto; */
+}
+h1 {
+  /* font-family: "Cairo", sans-serif; */
+  /* font-family: "Courgette", cursive; */
+  font-family: "Paprika", cursive;
+  /* font-family: "Readex Pro", sans-serif; */
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-content: space-between;
+  width: 210px;
+  font-size: 36px;
+}
+.CSE-dashboard-btn {
+  color: white;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  font-family: "Cairo", sans-serif;
+  font-family: "Courgette", cursive;
+  font-family: "Paprika", cursive;
+  font-family: "Readex Pro", sans-serif;
+  font-size: 17px;
+}
+.CSE-dashboard-item span {
+  padding-left: 10px;
+}
+
+.CSE-dashboard-item {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  /* width: 0px; */
+  height: 50px;
+  padding-right: 20px;
+}

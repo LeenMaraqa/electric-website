@@ -3,7 +3,7 @@ import Header from "../../../components/header/header.component";
 import "../../../components/main form/main-form.css";
 import "../check elec meter/check-elec-meter.css";
 const ModifyData = () => {
-  const type = "تعديل بيانات المستفيد";
+  const type =  "تعديل بيانات المستفيد";//تعديل بيانات المستفيد
  
   return (
     <div className="check-elec-meter">

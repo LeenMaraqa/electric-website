@@ -11,7 +11,7 @@ const Maintenance = () => {
        <Header/>
       <div className="aboutapp">
         <h2>طلب صيانة  </h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
+        <div>... عزيزي المشترك نرجو من حضرتك </div>
       </div>
       <MainForm type={type} reason ={reason} />
     </div>

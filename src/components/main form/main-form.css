@@ -22,9 +22,21 @@ input[type="image"] {
   box-sizing: border-box;
 }
 .optional {
-  direction: rtl;
+  direction: rtl;width: 700px;
 }
-/*   
+.optional [type="number"],
+input[type="text"],
+input[type="file"],
+input[type="image"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 25px 0;
+  display: inline-block;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+}
+/*
+
   .main-form input[type=submit] {
     width: 100%;
     background-color: #4CAF50;

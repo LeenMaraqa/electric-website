@@ -13,7 +13,6 @@ const Header = () => {
         </div>
 
         <div className="right">
-          
           <div>
             {" "}
             <PhoneCall size={24} color="#f47629" weight="bold" />
@@ -31,7 +30,6 @@ const Header = () => {
           <div className="logo">
             <img src={logo} alt="" width={113} height={113} />
           </div>
-          
           <Link to="/home" style={{ color: "black", textDecoration: "none" }}>
             <span>الرئيسية</span>
           </Link>
@@ -39,10 +37,8 @@ const Header = () => {
             to="/eservices"
             style={{ color: "black", textDecoration: "none" }}
           >
-           <span>الخدمات</span>
-          
+            <span>الخدمات</span>
           </Link>{" "}
-          
           <Link style={{ color: "black", textDecoration: "none" }}>
             <span>الاخبار</span>
           </Link>{" "}
