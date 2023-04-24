@@ -20,6 +20,9 @@ import ModifyData from "./pages/application/modify-beneficiarys-data/modify-data
 import TransferPoles from "./pages/application/transfer poles/transfer-poles.page";
 import Footer from "./components/footer/footer.component";
 import CSE_Dashboard from "./pages/CSE-Dashboard/CSE-Dashboard.page";
+import Customer_Dashboard from "./pages/customer-Dashboard/customer-Dashboard.page";
+import View_Subscription from "./components/Customer/view_subscription/view-subscription.component";
+import View_Application from "./components/Customer/view-applications/view-application.component";
 function App() {
   return (
     <div className="App">
@@ -39,17 +42,14 @@ function App() {
           <Route path="/objection" element={<Objection />} />
           <Route path="/maintenance" element={<Maintenance />} />
           <Route path="/reduceInstallment" element={<ReduceInstallment />} />
-          <Route
-            path="/temporaryToPermanent"
-            element={<TemporaryToPermanent />}
-          />
+          <Route path="/temporaryToPermanent" element={<TemporaryToPermanent />}/>
           <Route path="/modifybeneficiarysdata" element={<ModifyData />} />
           <Route path="/transferpoles" element={<TransferPoles />} />
           <Route path="/CSE_Dashboard" element={<CSE_Dashboard />} />
-
-          {/* <Route path="mainApp" element={<MainApp />} />
-          <Route path="secondaryApp" element={<SecApp />} /> */}
-        </Routes>
+          <Route path="/customer_Dashboard" element={<Customer_Dashboard />} />
+          <Route path="/view-subscription" element={<View_Subscription/>} />
+          <Route path="/view-application" element={<View_Application/>} />
+ </Routes>
       </BrowserRouter>
       {/* <Footer/> */}
     </div>

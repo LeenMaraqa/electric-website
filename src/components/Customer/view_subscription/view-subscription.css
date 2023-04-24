@@ -1,0 +1,69 @@
+/* .subscription-wapper{
+    display: flex;
+} */
+.customer-info {
+    display: flex;
+    flex-direction: column;
+    /* position: relative; new */
+    color: black;
+    /* width: 1360px; */
+    /* direction: rtl; */
+    overflow: auto; /*new*/
+    direction: rtl;
+    align-items: center;
+    /* justify-content: center; */
+    /* align-content: center; */
+  }
+  
+  .customer-info table {
+    /* overflow-y: auto; */
+    color: black;
+    width: 70%;
+    direction: rtl;
+    text-align: center;
+    height: auto;
+    border-collapse: collapse;
+    font-size: 0.88em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: 50px 0px;
+    
+  }
+  
+  .customer-info table thead {
+    color: white;
+    font-weight: 700;
+    background-color: #FFD495;
+    /* FAAB78 */
+    /* FEBE8C */
+    color: black;
+    font-weight: 900;
+    height: 50px;
+    text-align: right;
+  }
+  
+  .customer-info table th {
+    padding: 12px 10px;
+  }
+  .customer-info thead th {
+    padding: 10px 50px;
+  }
+  .customer-info table td {
+    padding: 20px 0px;
+  }
+  
+  .customer-info tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .customer-info tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .customer-info tbody tr:last-of-type {
+    border-bottom: 3px solid #FFD495;
+  }
+  
+
+.test thead th {
+    padding: 10px 25px;
+  }
