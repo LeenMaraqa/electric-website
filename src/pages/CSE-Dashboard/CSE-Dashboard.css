@@ -1,7 +1,7 @@
 /* body {
     overflow-y: scroll;
   } */
-.CSE-container {
+/* .CSE-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   flex-direction: column;
   overflow-x: scroll;
   overflow-y: scroll;
-}
+} */
 
 .info {
   display: flex;
@@ -41,6 +41,7 @@
   font-size: 0.88em;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   margin: 50px 0px;
+  /* margin-bottom: 800px; */
 }
 
 .info table thead {
@@ -128,7 +129,7 @@ tbody tr:last-of-type {
 }
 
 .content {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   height: 260px;
 }
 
@@ -151,4 +152,20 @@ tbody tr:last-of-type {
 .CSE-container .content .info {
   width: 1070px;
   background-color: white;
+}
+div.info{
+  position: relative;
+  /* right: 80px; */
+  bottom: 110px;
+  overflow-x: scroll;
+  overflow-y: scroll;  
+  overflow: auto;  
+
+}
+div.appInfo{
+  bottom: 200px;
+}
+div.searchResult{
+  background-color: #dddddd;
+  bottom: 20px;
 }

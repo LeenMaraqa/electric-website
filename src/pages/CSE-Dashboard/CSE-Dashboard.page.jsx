@@ -58,15 +58,15 @@ const CSE_Dashboard = () => {
         </div>
       </div>
       <div className="content">
-        <div className="overview-wrapper">
+        {/* <div className="overview-wrapper">
           <div className="quick-overview"></div>
           <div className="quick-overview"></div>
           <div className="quick-overview"></div>
           <div className="quick-overview"></div>
-        </div>
+        </div> */}
 
         {searchResults.length > 0 ? (
-          <div className="info">
+          <div className="info searchResult">
             <table>
               <thead>
                 <tr>

@@ -2,13 +2,21 @@ import Customer_Dashboard from "../../../pages/customer-Dashboard/customer-Dashb
 import { useState, useEffect } from "react";
 const View_Application = () => {
   const [customerApp, setCustomerApp] = useState([]);
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
   const fetchCustomerApp = async () => {
     const response = await fetch(
-"https://my.api.mockaroo.com/view-application.json?key=f4868e30"    );
+      "https://my.api.mockaroo.com/view-application.json?key=f4868e30",{
+      
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'X-User-ID': userId,
+        },
+      });
     console.log(response);
     const jsonData = await response.json();
     setCustomerApp(jsonData);
-    console.log(customerApp)
+    console.log(customerApp);
   };
 
   useEffect(() => {

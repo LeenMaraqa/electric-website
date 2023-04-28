@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500&family=Courgette&family=Paprika&family=Readex+Pro&display=swap");
+
+.custom-modal {
+  /* background-color: #f0f0f0; */
+  font-size: 18px;
+  direction: rtl;
+  /* font-family: "Cairo", sans-serif;
+  font-family: "Courgette", cursive;
+  font-family: "Paprika", cursive; */
+  font-family: "Readex Pro", sans-serif;
+}
+/* .details button{
+  background-color: #007a6f;
+} */

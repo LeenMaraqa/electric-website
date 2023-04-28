@@ -3,10 +3,17 @@ import Customer_Dashboard from "../../../pages/customer-Dashboard/customer-Dashb
 import "./view-subscription.css"
 const View_Subscription = () => {
   const [customerSubscriptions, setCustomerSubscriptions] = useState([]);
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
   const fetchSubscriptions = async () => {
     const response = await fetch(
-      "https://my.api.mockaroo.com/view-subscription.json?key=f4868e30"
-    );
+      "https://my.api.mockaroo.com/view-subscription.json?key=f4868e30",{
+      
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'X-User-ID': userId,
+      },
+    });
     console.log(response);
 
     const jsonData = await response.json();

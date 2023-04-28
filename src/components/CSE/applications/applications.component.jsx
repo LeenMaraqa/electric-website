@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../sidebar menu/sidebar-menu.css";
 import "../../../pages/CSE-Dashboard/CSE-Dashboard.css";
+import MoreDetails from "../more details/moreDetails.component";
+import user1 from "../../../images/user1.png";
 const Applications = () => {
   const [applications, setApplications] = useState([]);
   // https://my.api.mockaroo.com/appsInfo.json?key=f4868e30&__method=POST
@@ -9,38 +11,9 @@ const Applications = () => {
     const response = await fetch("http://localhost:5000/api/request");
     const jsonData = await response.json();
     setApplications(jsonData);
+    console.log("response", response);
+    console.log("jsonData", jsonData);
   };
-
-  // const handleStatusUpdate = async (id, newStatus) => {
-  //   console.log("id : ", id);
-  //   console.log("new status : ", newStatus);
-
-  //   try {
-  //     const response = await fetch(`http://localhost:5000/api/request`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         id: id,
-  //         status: newStatus,
-  //       }),
-  //     });
-  //     console.log("response", response);
-  //     const updatedApplication = await response.json();
-  //     console.log("updatedApplication", updatedApplication);
-  //     const updatedApplications = applications.map((app) =>
-  //       app.id === id ? { ...app, status: newStatus } : app
-  //     );
-  //     // console.log("updatedApplicationss",updatedApplications);
-
-  //     setApplications(updatedApplications);
-
-  //     console.log("updated applications", updatedApplications);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   const handleStatusUpdate = async (id, newStatus) => {
     console.log("id : ", id);
@@ -83,7 +56,7 @@ const Applications = () => {
         الطلبات
       </button>
       {applications.length > 0 ? (
-        <div className="info">
+        <div className="info appInfo">
           {" "}
           <table>
             <thead>
@@ -124,8 +97,25 @@ const Applications = () => {
                     </select>
                   </td>
                   <td>{item.createdAt}</td>
+
                   <td>
-                    <button>تفاصيل اخرى</button>
+                    {" "}
+                    <MoreDetails
+                      // requestId={item.RequestID}
+                      customerName={item.service.customer.CustomerName}
+                      serviceId={item.service.ServiceID}
+                      requestTypeName={item.request_type.TypeName}
+                      phoneNumber={item.service.customer.PhoneNumber}
+                      address={item.service.Address}
+                      reason={item.Reason}
+                      beneficiaryIDImage={user1}
+                      userIDImage={user1}
+                      beneficiaryName={"nana"}
+                      footPrint={user1}
+                      locationImage={user1}
+                      electricianName={"test"}
+                      electricianPhoneNumber={"151848"}
+                    />
                   </td>
                 </tr>
               ))}

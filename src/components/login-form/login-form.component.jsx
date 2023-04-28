@@ -5,14 +5,11 @@ import { useRef, useState } from "react";
 const LoginForm = ({ onLogin = () => {} }) => {
   const userIDRef = useRef();
   const userPasswordRef = useRef();
-  console.log("1");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = userIDRef.current.value;
     const password = userPasswordRef.current.value;
-    console.log("2");
     onLogin(id, password);
-    console.log("3");
   };
   return (
     <div className="login-page">

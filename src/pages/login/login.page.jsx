@@ -6,17 +6,14 @@ import { useNavigate } from "react-router-dom";
 const LoginPage = ({ onLogin = () => {} }) => {
   const navigate = useNavigate();
 
-  console.log("onLogin: ", onLogin);
-  console.log("4");
   const handleLogin = async (id, password) => {
-    if (typeof onLogin !== "function") {
-      console.log("onLogin is not a function");
-      console.log("5");
-      throw new Error("onLogin is not a function");
-      console.log("6");
-    }
+    // if (typeof onLogin !== "function") {
+    //   console.log("onLogin is not a function");
+    //   console.log("5");
+    //   throw new Error("onLogin is not a function");
+    //   console.log("6");
+    // }
     try {
-      console.log("7");
       const response = await fetch(
         // "https://my.api.mockaroo.com/users.json?key=6b7de8e0&__method=POST",
         "http://localhost:5000/api/login",
@@ -28,30 +25,28 @@ const LoginPage = ({ onLogin = () => {} }) => {
           body: JSON.stringify({ id, password }),
         }
       );
-      console.log("8");
-      const { token, role } = await response.json();
+      if (response.ok) {
+      const { userId,token, role } = await response.json();
+      localStorage.setItem("userId", userId);
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      console.log("9");
-      onLogin();
-      console.log("10");
-      if (response.status === 200) {
-        console.log("Login successful");
-        const role = localStorage.getItem("role");
+   //   onLogin();
+      const userRole = localStorage.getItem("role");
         {
-          role === "Admin" ? (
+          userRole === "Admin" ? (
             console.log("admin") // <AdminPage />
-          ) : role === "user" ? (
-            console.log("user") // <UserPage />
-          ) : role === "CSE" ? (
+          ) : userRole === "user" ? (
+            console.log("user") //navigate("/customer_Dashboard")
+          ) : userRole === "CSE" ? (
             navigate("/CSE_Dashboard")
           ) : (
             <LoginPage onLogin={() => window.location.reload()} />
           );
         }
-      } else {
-        console.log("Login failed");
+    } else {
+        alert('Invalid credentials. Please try again.');
       }
+
     } catch (error) {
       console.error(error);
     }
