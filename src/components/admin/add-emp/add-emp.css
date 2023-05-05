@@ -1,0 +1,67 @@
+.addEmpForm input,
+select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin-bottom: 10px;
+  font-family: "Readex Pro", sans-serif;
+  font-size: 0.75rem;
+}
+.addEmpForm input[type="text"] {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.addEmpForm label {
+  padding: 10px 6px;
+  display: inline-block;
+}
+
+
+button.Empbtn {
+  color: white;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  /* font-family: "Cairo", sans-serif;
+  font-family: "Courgette", cursive;
+  font-family: "Paprika", cursive; */
+  font-family: "Readex Pro", sans-serif;
+  font-size: 17px;
+  position: relative;
+  bottom: 5px;
+  box-shadow: none;
+  padding: 0px 0px;
+  margin: 0px 0px;
+  height: 0px;
+}
+button.Empbtn :hover {
+  background-color: #007a6f;
+}
+.addbtn {
+  background-color: #ffffff;
+  color: #007a6f;
+  cursor: pointer;
+  font-family: "Readex Pro", sans-serif;
+  font-size: 17px;
+  position: relative;
+  bottom: 5px;
+  box-shadow: none;
+  width: 20%;
+  padding: 14px 10px;
+  margin: 12px 0;
+  cursor: pointer;
+  border: 1px solid #007a6f;
+  border-radius: 5%;
+  /* font-size: .90rem; */
+  font-weight: 100;
+  font-size: 0.88rem;
+  position: relative;
+  right: 375px;
+}
+.addbtn:hover {
+  background-color: #007a6f;
+  color: #ffffff;
+}

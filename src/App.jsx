@@ -1,7 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-// import Header from "./components/header/header.component";
 import Home from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
 import EmpLoginPage from "./pages/emp-login/Emp-login.page";
@@ -18,11 +16,11 @@ import ReduceInstallment from "./pages/application/reduce installment/reduce-ins
 import TemporaryToPermanent from "./pages/application/temporary to permanent/temporary-to-permanent.page";
 import ModifyData from "./pages/application/modify-beneficiarys-data/modify-data.page";
 import TransferPoles from "./pages/application/transfer poles/transfer-poles.page";
-import Footer from "./components/footer/footer.component";
 import CSE_Dashboard from "./pages/CSE-Dashboard/CSE-Dashboard.page";
 import Customer_Dashboard from "./pages/customer-Dashboard/customer-Dashboard.page";
 import View_Subscription from "./components/Customer/view_subscription/view-subscription.component";
 import View_Application from "./components/Customer/view-applications/view-application.component";
+import Admin_Dashboard from "./pages/Admin-Dashboard/admin-Dashboard.paje";
 function App() {
   return (
     <div className="App">
@@ -42,16 +40,19 @@ function App() {
           <Route path="/objection" element={<Objection />} />
           <Route path="/maintenance" element={<Maintenance />} />
           <Route path="/reduceInstallment" element={<ReduceInstallment />} />
-          <Route path="/temporaryToPermanent" element={<TemporaryToPermanent />}/>
+          <Route
+            path="/temporaryToPermanent"
+            element={<TemporaryToPermanent />}
+          />
           <Route path="/modifybeneficiarysdata" element={<ModifyData />} />
           <Route path="/transferpoles" element={<TransferPoles />} />
           <Route path="/CSE_Dashboard" element={<CSE_Dashboard />} />
           <Route path="/customer_Dashboard" element={<Customer_Dashboard />} />
-          <Route path="/view-subscription" element={<View_Subscription/>} />
-          <Route path="/view-application" element={<View_Application/>} />
- </Routes>
+          <Route path="/view-subscription" element={<View_Subscription />} />
+          <Route path="/view-application" element={<View_Application />} />
+          <Route path="Admin_Dashboard" element={<Admin_Dashboard />} />
+        </Routes>
       </BrowserRouter>
-      {/* <Footer/> */}
     </div>
   );
 }

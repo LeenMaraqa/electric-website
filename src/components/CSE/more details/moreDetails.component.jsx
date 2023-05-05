@@ -3,6 +3,7 @@ import { Button, Modal } from "antd";
 import "./moreDetails.css";
 const MoreDetails = ({
   customerName,
+  serviceId,
   requestTypeName,
   phoneNumber,
   address,
@@ -15,6 +16,7 @@ const MoreDetails = ({
   electricianName,
   electricianPhoneNumber,
 }) => {
+  console.log("locationImage = ", locationImage);
   const [open, setOpen] = useState(false);
   const showModal = () => {
     setOpen(true);
@@ -40,14 +42,21 @@ const MoreDetails = ({
         footer={null}
         className="custom-modal"
       >
-        {/* <p> تفاصيل اخرى</p> */}
         <div>
           <p>اسم المشترك : {customerName}</p>
-          {/* <p>Service ID: {serviceId}</p> */}
           <p>رقم هاتف المشترك : {phoneNumber}</p>
-          <p>العنوان: {address}</p>
-          <p>سبب تقديم الطلب : {reason}</p>
-
+          <p>رقم الخدمة : {serviceId}</p>
+          <p>العنوان الكامل: {address}</p>
+          <p>
+            {requestTypeName == "تحويل من مؤقت الى دائم" ||
+            requestTypeName == "نقل الاعمدة المعارضة" ||
+            requestTypeName == "معالجة مشكلة ضعف التيار" ||
+            requestTypeName == "صيانة" ||
+            requestTypeName == "تخفيض أقساط" ||
+            requestTypeName == "اعتراض على تقدير بدل استهلاك" ? (
+              <div>سبب تقديم الطلب : {reason}</div>
+            ) : null}
+          </p>
           {requestTypeName == "تعديل بيانات المستفيد" && (
             <div>
               {" "}
@@ -58,6 +67,7 @@ const MoreDetails = ({
                 alt=""
                 width={200}
                 height={200}
+                // object-fit= {"cover"}
               />{" "}
               <div>صورة هوية المالك :</div>
               <img src={userIDImage} alt="" width={200} height={200} />{" "}
@@ -66,7 +76,12 @@ const MoreDetails = ({
           {requestTypeName == "نقل الاعمدة المعارضة" && (
             <div>
               <div>صورة توضح المشكلة : </div>
-              <img src={locationImage} alt="" width={200} height={200} />
+              <img
+                src={locationImage}
+                alt="locationImage"
+                width={200}
+                height={200}
+              />
               <div>مخطط المساحة : </div>
               <img src={footPrint} alt="" width={200} height={200} />
             </div>

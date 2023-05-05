@@ -1,0 +1,9 @@
+div.empInfo {
+  position: relative;
+  top: 70px;
+  /* left: -12px; */
+  right: 6px;
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+}

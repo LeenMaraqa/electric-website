@@ -5,14 +5,15 @@ import MoreDetails from "../more details/moreDetails.component";
 import user1 from "../../../images/user1.png";
 const Applications = () => {
   const [applications, setApplications] = useState([]);
-  // https://my.api.mockaroo.com/appsInfo.json?key=f4868e30&__method=POST
   const [status, setStatus] = useState("");
+  const empNum = localStorage.getItem("userId");
+  // console.log("empnum : ",empNum);
   const fetchApplications = async () => {
     const response = await fetch("http://localhost:5000/api/request");
-    const jsonData = await response.json();
-    setApplications(jsonData);
+    const allApplications = await response.json();
+    setApplications(allApplications);
     console.log("response", response);
-    console.log("jsonData", jsonData);
+    console.log("allApplications", allApplications);
   };
 
   const handleStatusUpdate = async (id, newStatus) => {
@@ -28,13 +29,12 @@ const Applications = () => {
         body: JSON.stringify({
           id: id,
           status: newStatus,
+          empNum: empNum,
         }),
       });
       console.log("response", response);
-      //number of rows affected by the update operation
       const updatedApplication = await response.json();
       console.log("updatedApplication", updatedApplication);
-
       // Update the status of the selected application in the state
       setApplications(
         applications.map((app) =>
@@ -62,14 +62,15 @@ const Applications = () => {
             <thead>
               <tr>
                 <th>رقم الطلب</th>
-                <th>اسم المشترك </th>
-                <th> رقم الخدمة</th>
-                <th>نوع الطلب</th>
-                <th> رقم الهاتف </th>
-                <th>&nbsp; &nbsp; &nbsp; &nbsp; العنوان</th>
+                <th>اسم مقدم الطلب </th>
+                {/* <th> رقم الخدمة</th> */}
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;نوع الطلب</th>
+                <th> رقم هاتف مقدم الطلب </th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; العنوان</th>
                 {/* <th>  السبب</th> */}
                 <th>حالة الطلب</th>
                 <th>تاريخ تقديم الطلب</th>
+                {/* <th>test</th> */}
                 <th>تفاصيل اخرى</th>
               </tr>
             </thead>
@@ -77,12 +78,10 @@ const Applications = () => {
               {applications.map((item) => (
                 <tr key={item.RequestID}>
                   <td>{item.RequestID}</td>
-                  <td>{item.service.customer.CustomerName}</td>
-                  <td>{item.service.ServiceID}</td>
+                  <td>{item.ApplicantName}</td>
                   <td>{item.request_type.TypeName}</td>
-                  <td>{item.service.customer.PhoneNumber}</td>
-                  <td>{item.service.Address}</td>
-                  {/* <td>{item.reason}</td> */}
+                  <td>{item.ApplicantPhoneNumber}</td>
+                  <td>{item.ApplicantAddress}</td>
                   <td>
                     <select
                       value={item.request_status.StatusName}
@@ -97,7 +96,6 @@ const Applications = () => {
                     </select>
                   </td>
                   <td>{item.createdAt}</td>
-
                   <td>
                     {" "}
                     <MoreDetails
@@ -108,13 +106,41 @@ const Applications = () => {
                       phoneNumber={item.service.customer.PhoneNumber}
                       address={item.service.Address}
                       reason={item.Reason}
-                      beneficiaryIDImage={user1}
-                      userIDImage={user1}
-                      beneficiaryName={"nana"}
-                      footPrint={user1}
-                      locationImage={user1}
-                      electricianName={"test"}
-                      electricianPhoneNumber={"151848"}
+                      beneficiaryIDImage={
+                        item.request_type.TypeName === "تعديل بيانات المستفيد"
+                          ? `data:image/jpg;base64,${item["tenant-datum"].TenantImage}`
+                          : "no image"
+                      }
+                      userIDImage={
+                        item.request_type.TypeName === "تعديل بيانات المستفيد"
+                          ? `data:image/jpg;base64,${item["tenant-datum"].CustomerImage}`
+                          : "no image"
+                      }
+                      beneficiaryName={
+                        item.request_type.TypeName === "تعديل بيانات المستفيد"
+                          ? `${item["tenant-datum"].TenantName}`
+                          : "no data"
+                      }
+                      footPrint={
+                        item.request_type.TypeName === "نقل الاعمدة المعارضة"
+                          ? `data:image/jpg;base64,${item.TransferringPole.Footprint}`
+                          : "no image"
+                      }
+                      locationImage={
+                        item.request_type.TypeName === "نقل الاعمدة المعارضة"
+                          ? `data:image/jpg;base64,${item.TransferringPole.LocationOfPole}`
+                          : "no image"
+                      }
+                      electricianName={
+                        item.request_type.TypeName === "تحويل من مؤقت الى دائم"
+                          ? `${item["property-type"].ElectricianName}`
+                          : "no data"
+                      }
+                      electricianPhoneNumber={
+                        item.request_type.TypeName === "تحويل من مؤقت الى دائم"
+                          ? `${item["property-type"].ElectricianNo}`
+                          : "no data"
+                      }
                     />
                   </td>
                 </tr>

@@ -1,17 +1,19 @@
 /* body {
     overflow-y: scroll;
   } */
-/* .CSE-container {
-  position: fixed;
+
+.CSE-container {
+  background-color: white;
+ /* position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   display: flex;
-  flex-direction: column;
-  overflow-x: scroll;
-  overflow-y: scroll;
-} */
+  flex-direction: column; */
+  /* overflow-x: scroll; */
+  /* overflow-y: scroll; */
+}
 
 .info {
   display: flex;
@@ -23,7 +25,7 @@
   width: 1110px;
   direction: rtl;
   margin: 20px;
-  margin-right: 200px;
+  /* margin-right: 200px; */
   background-color: whitesmoke;
   /* overflow: auto; new */
   /* direction: rtl; */
@@ -42,6 +44,9 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   margin: 50px 0px;
   /* margin-bottom: 800px; */
+  /* ****** */
+  /* position: relative;
+  left: 250px; */
 }
 
 .info table thead {
@@ -53,7 +58,7 @@
 }
 
 table th {
-  padding: 12px 10px;
+  padding: 12px 5px;
 }
 
 table td {
@@ -73,17 +78,19 @@ tbody tr:last-of-type {
 }
 
 .CSE-header {
-  width: 1200px;
+  /* width: 1200px; */
   padding: 20px;
   background-color: white;
 }
+
 
 .header-wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: row-reverse;
-  width: 1000px;
+  /* width: 1000px; */
+width: 80%;
 }
 
 .header-search {
@@ -150,22 +157,29 @@ tbody tr:last-of-type {
 }
 
 .CSE-container .content .info {
-  width: 1070px;
+  /* width: 1070px; */
   background-color: white;
 }
 div.info{
   position: relative;
   /* right: 80px; */
   bottom: 110px;
-  overflow-x: scroll;
-  overflow-y: scroll;  
-  overflow: auto;  
+  /* overflow-x: scroll; */
+  /* overflow-y: scroll;   */
+  /* overflow: scroll;   */
+  background-color: white;
+  right: 180px;
 
 }
 div.appInfo{
-  bottom: 200px;
+  /* bottom: 200px; */
+  top: -220px;
+  /* right: 180px; */
+  /* overflow: scroll; */
 }
+
 div.searchResult{
   background-color: #dddddd;
-  bottom: 20px;
+  top: 10px;
+  right: 32px;
 }
