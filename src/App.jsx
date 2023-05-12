@@ -21,6 +21,7 @@ import Customer_Dashboard from "./pages/customer-Dashboard/customer-Dashboard.pa
 import View_Subscription from "./components/Customer/view_subscription/view-subscription.component";
 import View_Application from "./components/Customer/view-applications/view-application.component";
 import Admin_Dashboard from "./pages/Admin-Dashboard/admin-Dashboard.paje";
+import PRE_Dashboard from "./pages/PRE-Dashboard/PRE-Dashboard.page";
 function App() {
   return (
     <div className="App">
@@ -51,6 +52,8 @@ function App() {
           <Route path="/view-subscription" element={<View_Subscription />} />
           <Route path="/view-application" element={<View_Application />} />
           <Route path="Admin_Dashboard" element={<Admin_Dashboard />} />
+          <Route path="PRE_Dashboard" element={<PRE_Dashboard />} />
+
         </Routes>
       </BrowserRouter>
     </div>

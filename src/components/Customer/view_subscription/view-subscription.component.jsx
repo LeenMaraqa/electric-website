@@ -7,11 +7,12 @@ const View_Subscription = () => {
   const token = localStorage.getItem("token");
   const fetchSubscriptions = async () => {
     const response = await fetch(
-      "https://my.api.mockaroo.com/view-subscription.json?key=f4868e30",{
-      
+     //   "https://my.api.mockaroo.com/view-subscription.json?key=f4868e30",{
+          "localhost:5000/api/customers/applications",{
+
       headers: {
         'Authorization': `Bearer ${token}`,
-        'X-User-ID': userId,
+        'X-User-ID': userId,///??userId
       },
     });
     console.log(response);
@@ -37,17 +38,17 @@ const View_Subscription = () => {
               <th>رقم الخدمة</th>
               <th>نوع الاشتراك </th>
               <th>العنوان </th>
-              <th>حالة الاشتراك</th>
+              {/* <th>حالة الاشتراك</th> */}
               <th>تاريخ الاشتراك </th>
             </tr>
           </thead>
           <tbody>
             {customerSubscriptions.map((data) => (
-              <tr key={data.service_id}>
+              <tr key={data.ServiveID}>
                 <td>{data.service_id}</td>
-                <td>{data.subscription_Type}</td>
+                <td>{data.subscriptionType}</td>
                 <td>{data.address}</td>
-                <td>{data.subscription_Status}</td>
+                {/* <td>{data.subscription_Status}</td>   */}
                 <td>{data.createdAt}</td>
               </tr>
             ))}

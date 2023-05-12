@@ -126,7 +126,7 @@ const AddEmp = () => {
                 required
               />
             </div>
-            <div>
+            {/* <div>
               <label>تاريخ انضمام الموظف </label>
               <input
                 type="date"
@@ -135,7 +135,7 @@ const AddEmp = () => {
                 onChange={handleInput}
                 required
               />
-            </div>
+            </div> */}
             <div>
               <label>نوع الوظيفة </label>
               <select name="role" value={empData.role} onChange={handleInput}>
