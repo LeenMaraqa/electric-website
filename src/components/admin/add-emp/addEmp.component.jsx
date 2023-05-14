@@ -1,5 +1,5 @@
 import { Button, Modal } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./add-emp.css";
 const AddEmp = () => {
   const [open, setOpen] = useState(false);
@@ -15,44 +15,112 @@ const AddEmp = () => {
     setOpen(false);
   };
   const [empData, setEmpData] = useState({
-    empNum: "",
+    // empNum: "",
     empName: "",
     role: "",
     id: "",
     phoneNum: "",
-    address: "",
+    // address: "",
     startDate: "",
     // empImage: null,
     endDate: "",
     reason: "",
+    password: "",
   });
   const handleInput = (e) => {
     const { name, value } = e.target;
     setEmpData({ ...empData, [name]: value });
   };
+  
+  const [phoneNumError, setPhoneNumError] = useState("");
+  const [idError, setIdError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+  const handlePhoneNumChange = (event) => {
+    const value = event.target.value;
+    setEmpData((prevState) => ({
+      ...prevState,
+      phoneNum: value,
+    }));
+    if (value.length !== 9 || !value.startsWith("5")) {
+      setPhoneNumError("يجب ان يتكون رقم الهاتف من 9 خانات و يبدأ ب 5");
+    } else {
+      setPhoneNumError("");
+    }
+  };
+
+  const handleIdChange = (event) => {
+    const value = event.target.value;
+    setEmpData((prevState) => ({
+      ...prevState,
+      id: value,
+    }));
+    if (value.length !== 10) {
+      setIdError("يجب ان يتكون رقم الهوية من 10 خانات ");
+    } else {
+      setIdError("");
+    }
+  };
+
+  const handlePasswordChange = (event) => {
+    const value = event.target.value;
+    setEmpData((prevState) => ({
+      ...prevState,
+      password: value,
+    }));
+    const strongRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!strongRegex.test(value) || value.length < 8) {
+      setPasswordError(
+        "يرجى ملاحظة أن كلمة المرور يجب أن تتكون من 8 أحرف على الأقل وتشمل حروفاً كبيرة وصغيرة وأرقاماً ورموزاً "
+      );
+    } else {
+      setPasswordError("");
+    }
+  };
+  useEffect(() => {
+    if (
+      empData.empName &&
+      empData.role &&
+      empData.id &&
+      empData.phoneNum &&
+      empData.password &&
+      phoneNumError === "" &&
+      idError === ""
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [empData, phoneNumError, idError]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const {
-      empNum,
+      // empNum,
       empName,
       role,
-      address,
+      // address,
       phoneNum,
       id,
       startDate,
       // empImage: null,
       endDate,
       reason,
+      password,
     } = empData;
     console.log(empData);
     try {
-        const response = await fetch("", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(empData),
-      });
-
-      if (response.status === 200) {
+      const response = await fetch(
+        "http://localhost:5000/api/employees/NewEmployee",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(empData),
+        }
+      );
+      if (response.status === 201) {
         alert("تمت اضافة الموظف بنجاح");
       } else {
         alert("حدثت مشكلة في اضافة الموظف يرجى المحاولة مرة اخرى");
@@ -60,8 +128,8 @@ const AddEmp = () => {
     } catch (error) {
       console.log("An error occurred while submitting the form:", error);
     }
-    window.location.reload();
   };
+
   return (
     <>
       <Button className="Empbtn" type="primary" onClick={showModal}>
@@ -76,7 +144,7 @@ const AddEmp = () => {
       >
         <div>
           <form className="addEmpForm" onSubmit={handleSubmit}>
-            <div>
+            {/* <div>
               <label>رقم الموظف</label>
               <input
                 type="number"
@@ -85,7 +153,7 @@ const AddEmp = () => {
                 onChange={handleInput}
                 required
               />
-            </div>
+            </div> */}
             <div>
               <label>اسم الموظف</label>
               <input
@@ -102,11 +170,16 @@ const AddEmp = () => {
                 type="number"
                 name="phoneNum"
                 value={empData.phoneNum}
-                onChange={handleInput}
+                onChange={handlePhoneNumChange}
                 required
               />
+              {phoneNumError && (
+                <p className="validation_message">
+                  يجب ان يتكون رقم الهاتف من 9 خانات و يبدأ ب 5
+                </p>
+              )}
             </div>
-            <div>
+            {/* <div>
               <label> العنوان</label>
               <input
                 type="text"
@@ -115,16 +188,36 @@ const AddEmp = () => {
                 onChange={handleInput}
                 required
               />
-            </div>
+            </div> */}
             <div>
               <label>رقم هوية الموظف</label>
               <input
                 type="number"
                 name="id"
                 value={empData.id}
-                onChange={handleInput}
+                onChange={handleIdChange}
                 required
               />
+              {idError && (
+                <p className="validation_message">
+                  يجب ان يتكون رقم الهوية من 10 خانات
+                </p>
+              )}
+            </div>
+            <div>
+              <label> كلمة السر </label>
+              <input
+                type="password"
+                name="password"
+                value={empData.password}
+                onChange={handlePasswordChange}
+                required  
+              />
+              {passwordError && (
+                <p className="validation_message">
+                 {passwordError}
+                </p>
+              )}
             </div>
             {/* <div>
               <label>تاريخ انضمام الموظف </label>
@@ -145,8 +238,8 @@ const AddEmp = () => {
                 <option value="Admin"> IT</option>
               </select>
             </div>
-
-            <button className="addbtn" type="submit">
+            
+            <button disabled={!isValid} className="addbtn" type="submit">
               اضافة{" "}
             </button>
           </form>

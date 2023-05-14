@@ -12,29 +12,32 @@ const Admin_Dashboard = () => {
     new Date().toDateString() + " " + new Date().toLocaleTimeString();
   const fetchEmployee = async () => {
     const response = await fetch(
-      "https://my.api.mockaroo.com/employee.json?key=f4868e30"
+      "http://localhost:5000/api/employees"
     );
     const employeeData = await response.json();
     console.log("employeeData", employeeData);
     setEmployee(employeeData.filter((employee) => !employee.endDate));
     console.log("employee: ", employee);
   };
-  const archiveEmployee = async (empNum) => {
+  //https://my.api.mockaroo.com/archEmp/${empNum}.json?key=f4868e30&__method=PUT
+  const archiveEmployee = async (EmployeeID) => {
     try {
       const response = await fetch(
-        `https://my.api.mockaroo.com/archEmp/${empNum}.json?key=f4868e30&__method=PUT`,
+        `http://localhost:5000/api/employees/archive/${EmployeeID}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            empNum: empNum,
+            empNum: EmployeeID,
             endDate: endDate,
           }),
         }
       );
+      console.log(EmployeeID);
+      console.log(endDate);
       const test = await response.json();
       setEmployee(
-        employee.filter((archiveEmp) => archiveEmp.empNum !== empNum)
+        employee.filter((archiveEmp) => archiveEmp.EmployeeID !== EmployeeID)
       );
     } catch (error) {
       console.error(error);
@@ -86,28 +89,28 @@ const Admin_Dashboard = () => {
             <table className="data empData">
               <thead>
                 <tr>
-                  <th>رقم الموظف</th>
+                  {/* <th>رقم الموظف</th> */}
                   <th>اسم الموظف</th>
                   <th>رقم الهاتف</th>
                   <th>رقم الهوية </th>
-                  <th>العنوان </th>
+                  {/* <th>العنوان </th> */}
                   <th>نوع الوظيفة </th>
-                  <th> تاريخ بداية الخدمة</th>
+                  {/* <th> تاريخ بداية الخدمة</th> */}
                   <th> أرشفة </th>
                 </tr>
               </thead>
               <tbody>
                 {employee.map((data) => (
-                  <tr key={data.empNum}>
-                    <td>{data.empNum}</td>
-                    <td>{data.empName}</td>
-                    <td>{data.phoneNum}</td>
+                  <tr key={data.EmployeeID}>
+                    {/* <td>{data.empNum}</td> */}
+                    <td>{data.EmployeeName}</td>
+                    <td>{data.PhoneNumber}</td>
                     <td>{data.id}</td>
-                    <td>{data.address}</td>
+                    {/* <td>{data.address}</td> */}
                     <td>{data.role}</td>
-                    <td>{data.startDate}</td>
+                    {/* <td>{data.startDate}</td> */}
                     <td>
-                      <Button onClick={() => archiveEmployee(data.empNum)}>
+                      <Button onClick={() => archiveEmployee(data.EmployeeID)}>
                         أرشفة
                       </Button>
                     </td>

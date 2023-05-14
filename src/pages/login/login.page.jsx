@@ -30,15 +30,17 @@ const LoginPage = ({ onLogin = () => {} }) => {
       localStorage.setItem("userId", userId);
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-   //   onLogin();
+    //  onLogin();
       const userRole = localStorage.getItem("role");
         {
           userRole === "Admin" ? (
-            console.log("admin") // <AdminPage />
-          ) : userRole === "user" ? (
-            console.log("user") //navigate("/customer_Dashboard")
+            navigate("/Admin_Dashboard") // <AdminPage />
+          ) : userRole === "customer" ? (
+             navigate("/customer_Dashboard")
           ) : userRole === "CSE" ? (
             navigate("/CSE_Dashboard")
+            ) : userRole === "PRE" ? (
+              navigate("/PRE_Dashboard")  
           ) : (
             <LoginPage onLogin={() => window.location.reload()} />
           );

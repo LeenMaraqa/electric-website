@@ -6,11 +6,11 @@ const View_Application = () => {
   const token = localStorage.getItem("token");
   const fetchCustomerApp = async () => {
     const response = await fetch(
-      "https://my.api.mockaroo.com/view-application.json?key=f4868e30",{
+      "http://localhost:5000/api/customers/applications",{
       
         headers: {
           'Authorization': `Bearer ${token}`,
-          'X-User-ID': userId,
+          'userid': userId,
         },
       });
     console.log(response);
@@ -36,19 +36,20 @@ const View_Application = () => {
               <th>نوع الطلب</th>
               <th>حالة الطلب</th>
               <th>تاريخ تقديم الطلب </th>
-              <th>الموظف المسؤول</th>
+              {/* <th>الموظف المسؤول</th> */}
             </tr>
           </thead>
-          <tbody>
+
+<tbody>
             {customerApp.map((data) => (
-              <tr key={data.application_id}>
-                <td>{data.application_id}</td>
-                <td>{data.service_id}</td>
-                <td>{data.address}</td>
-                <td>{data.application_Type}</td>
-                <td>{data.application_Status}</td>
+              <tr key={data.RequestID}>
+                <td>{data.RequestID}</td>
+                <td>{data.service.ServiceID}</td>
+                <td>{data.service.Address}</td>
+                <td>{data.request_type.TypeName}</td>
+                <td>{data.request_status.StatusName}</td>
                 <td>{data.createdAt}</td>
-                <td>{data.employee_Name}</td>
+                {/* <td>{data.employee_Name}</td> */}
               </tr>
             ))}
           </tbody>
