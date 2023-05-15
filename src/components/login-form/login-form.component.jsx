@@ -1,22 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { useRef, useState } from "react";
+// import { Button, Modal } from "antd";
+// import LoginPage from "../../pages/login/login.page";
 
-const LoginForm = ({ onLogin = () => {} }) => {
-  const userIDRef = useRef();
-  const userPasswordRef = useRef();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = userIDRef.current.value;
-    const password = userPasswordRef.current.value;
-    onLogin(id, password);
+  const LoginForm = ({ onLogin = () => {} }) => {
+    const userIDRef = useRef();
+    const userPasswordRef = useRef();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const id = userIDRef.current.value;
+      const password = userPasswordRef.current.value;
+      onLogin(id, password);
+    
   };
   return (
     <div className="login-page">
-      <div className="slider-part">
-        {/* <img src={login} alt="" width={1000} /> */}
-      </div>
-
       <form onSubmit={handleSubmit} className="login-form">
         <div>
           {" "}

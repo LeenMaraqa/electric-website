@@ -17,6 +17,7 @@ const AddReport = () => {
 
   const [pdfReport, setPdfReport] = useState(null);
   const [title, setTitle] = useState("");
+  const [coverImage, setCoverImage] = useState("");
 
   const handleFileUpload = (event) => {
     setPdfReport(event.target.files[0]);
@@ -24,15 +25,18 @@ const AddReport = () => {
   const handleNameChange = (event) => {
     setTitle(event.target.value);
   };
-
+  const handleCoverImage = (event) => {
+    setCoverImage(event.target.value);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("pdfReport", pdfReport);
     formData.append("title", title);
+    formData.append("coverImage", coverImage);
 
     //API LINK///upload
-    const response = await fetch("", {
+    const response = await fetch("http://localhost:5000/api/reports", {
       method: "POST",
       body: formData,
     });
@@ -51,21 +55,40 @@ const AddReport = () => {
       >
         <div>
           <form onSubmit={handleSubmit}>
-            <label>عنوان التقرير</label>
-            <input
-              type="text"
-              placeholder=" أدخل عنوان التقرير مثلا التقرير السنوي 2023"
-              value={title}
-              name="title"
-              onChange={handleNameChange}
-              required
-            />
-            <label> قم باختيار الملف الذي تريد رفعه</label>
-            <input
-            type="file" 
-            onChange={handleFileUpload} 
-            name="pdfReport"
-            required />
+            <div>
+              {" "}
+              <label>عنوان التقرير</label>
+              <input
+                type="text"
+                placeholder=" أدخل عنوان التقرير مثلا التقرير السنوي 2023"
+                value={title}
+                name="title"
+                onChange={handleNameChange}
+                required
+              />
+            </div>
+            <div>
+              <label>صورة الغلاف</label>
+              <input
+                type="file"
+                accept="image/jpeg, image/png"
+                onChange={handleCoverImage}
+                name="coverImage"
+                required
+              />
+            </div>
+            <div>
+              {" "}
+              <label> قم باختيار الملف الذي تريد رفعه</label>
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={handleFileUpload}
+                name="pdfReport"
+                required
+              />
+            </div>
+
             <button className="addbtn" type="submit">
               Upload
             </button>

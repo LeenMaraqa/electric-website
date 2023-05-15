@@ -56,8 +56,8 @@ const AddEmp = () => {
       ...prevState,
       id: value,
     }));
-    if (value.length !== 10) {
-      setIdError("يجب ان يتكون رقم الهوية من 10 خانات ");
+    if (value.length !== 9) {
+      setIdError("يجب ان يتكون رقم الهوية من 9 خانات ");
     } else {
       setIdError("");
     }
@@ -87,13 +87,14 @@ const AddEmp = () => {
       empData.phoneNum &&
       empData.password &&
       phoneNumError === "" &&
-      idError === ""
+      idError === ""&&
+      passwordError==""//passwordError
     ) {
       setIsValid(true);
     } else {
       setIsValid(false);
     }
-  }, [empData, phoneNumError, idError]);
+  }, [empData, phoneNumError, idError,passwordError]);//passwordError
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -238,7 +239,6 @@ const AddEmp = () => {
                 <option value="Admin"> IT</option>
               </select>
             </div>
-            
             <button disabled={!isValid} className="addbtn" type="submit">
               اضافة{" "}
             </button>

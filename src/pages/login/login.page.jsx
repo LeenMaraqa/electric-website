@@ -1,64 +1,143 @@
 import LoginForm from "../../components/login-form/login-form.component";
 import CSE_Dashboard from "../CSE-Dashboard/CSE-Dashboard.page";
 import "./login.css";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/header/header.component";
-import { useNavigate } from "react-router-dom";
-const LoginPage = ({ onLogin = () => {} }) => {
+import { useState, useRef } from "react";
+import cover from "../../images/logincover15.png";
+// import cover from "../../images/service2.png";
+
+const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = async (id, password) => {
-    // if (typeof onLogin !== "function") {
-    //   console.log("onLogin is not a function");
-    //   console.log("5");
-    //   throw new Error("onLogin is not a function");
-    //   console.log("6");
-    // }
-    try {
-      const response = await fetch(
-        // "https://my.api.mockaroo.com/users.json?key=6b7de8e0&__method=POST",
-        "http://localhost:5000/api/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id, password }),
-        }
-      );
-      if (response.ok) {
-      const { userId,token, role } = await response.json();
-      localStorage.setItem("userId", userId);
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", role);
-    //  onLogin();
-      const userRole = localStorage.getItem("role");
-        {
-          userRole === "Admin" ? (
-            navigate("/Admin_Dashboard") // <AdminPage />
-          ) : userRole === "customer" ? (
-             navigate("/customer_Dashboard")
-          ) : userRole === "CSE" ? (
-            navigate("/CSE_Dashboard")
-            ) : userRole === "PRE" ? (
-              navigate("/PRE_Dashboard")  
-          ) : (
-            <LoginPage onLogin={() => window.location.reload()} />
-          );
-        }
-    } else {
-        alert('Invalid credentials. Please try again.');
-      }
+  const userIDRef = useRef();
 
+  const userPasswordRef = useRef();
+  const [loginMessage, setLoginMessage] = useState("");
+  // const [idErrorr, setIdErrorr] = useState("");
+  // const [passwordError, setPasswordError] = useState("");
+  // const[userID,setUserID]=useState("");
+  const handleSubmit = async (e) => {
+    // if (userIDRef.length !== 9) {
+    //   setIdErrorr(" رقم الهوية يتكون من 9 خانات ");
+    //   // alert("4564");
+    //   // return;
+    // } else {
+    //   setIdErrorr(false);
+    // }
+    e.preventDefault();
+    const id = userIDRef.current.value;
+    const password = userPasswordRef.current.value;
+    // onLogin(id, password);
+    try {
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, password }),
+      });
+      console.log("loginMessage try befor response.ok", loginMessage);
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("test", responseData.message);
+        console.log("responseData");
+        if (responseData == "") {
+          console.log("invalid ID");
+        }
+        setLoginMessage(responseData.message); 
+        const { userId, token, role } = responseData;
+
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", role);
+        console.log("loginMessage try if response.ok", loginMessage);
+
+        const userRole = localStorage.getItem("role");
+        if (userRole === "Admin") {
+          navigate("/Admin_Dashboard");
+        } else if (userRole === "customer") {
+          navigate("/home");
+          window.location.reload();
+        } else if (userRole === "CSE") {
+          navigate("/CSE_Dashboard");
+        } else if (userRole === "PRE") {
+          navigate("/PRE_Dashboard");
+        } else {
+          navigate("/");
+        }
+        console.log("loginMessage befor else", loginMessage);
+      } else {
+        const responseData = await response.json();
+        setLoginMessage(responseData.message); 
+        console.log("loginMessage else", loginMessage);
+      }
     } catch (error) {
       console.error(error);
+      setLoginMessage("An error occurred. Please try again."); 
     }
   };
 
   return (
     <div>
       <Header />
-      <LoginForm onLogin={handleLogin} />
+      <div className="login-content">
+        {/* <LoginForm onLogin={handleLogin} /> */}
+        <form onSubmit={handleSubmit} className="login-form">
+          <div>
+            {" "}
+            <h2>تسجيل الدخول</h2>
+          </div>
+          <div className="login-field">
+            <label>
+              <b>رقم الهوية</b>
+            </label>
+            <input
+              className="login-input"
+              name="IDNumber"
+              type="number"
+              placeholder="رقم الهوية"
+              ref={userIDRef}
+              required
+            />
+            {/* {idErrorr == false && (
+              <p className="validation_message">{idErrorr} </p>
+            )} */}
+            <label>
+              <b>كلمة المرور </b>
+            </label>
+            <input
+              className="login-input"
+              name="password"
+              type="password"
+              placeholder="كلمة المرور "
+              ref={userPasswordRef}
+              required
+            />
+          </div>
+          <div className="login-submit">
+            <button className="button-5" type="submit">
+              تسجيل الدخول
+            </button>
+          </div>
+          <Link
+            style={{
+              color: "grey",
+              textDecoration: "none",
+              fontWeight: "lighter",
+              fontSize: "13px",
+            }}
+            to="/home"
+          >
+            ليس لديك حساب؟ إنشاء حساب جديد
+          </Link>
+          {/* <p>{loginMessage}</p> // Display login message in component */}
+        </form>
+        {/* <img className="login-image" src={cover} width={650} height={477} /> */}
+      </div>
     </div>
   );
 };
+
 export default LoginPage;

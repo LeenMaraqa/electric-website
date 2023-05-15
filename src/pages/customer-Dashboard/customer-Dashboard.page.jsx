@@ -1,92 +1,95 @@
-import "../../components/header/header.css";
-import logo from "../../images/logo.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import { MapPin, PhoneCall, EnvelopeSimple } from "phosphor-react";
-const Customer_Dashboard = () => {
-  return (
-    <div>
-      <div className="header">
-        <div className="header-top">
-          <div className="left">
-            <span>شارع عين خير الدين</span>
-            <MapPin size={24} color="#f47629" weight="bold" />
-          </div>
+// import "../../components/header/header.css";
+// import logo from "../../images/logo.jpg";
+// import { Link, useNavigate } from "react-router-dom";
+// import { MapPin, PhoneCall, EnvelopeSimple } from "phosphor-react";
+// import { logout } from "../../components/logout/logout.component"
+// import Slider from "../../components/imageslider/slider.component";
+// import Eservices from "../../components/eservices/eservices.component";
+// import SomeNews from "../../components/somenews/somenews.component";
+// const Customer_Dashboard = () => {
+//   return (
+//     <div>
+//       <div className="header">
+//         <div className="header-top">
+//           <div className="left">
+//             <span>شارع عين خير الدين</span>
+//             <MapPin size={24} color="#f47629" weight="bold" />
+//           </div>
 
-          <div className="right">
-            <div>
-              {" "}
-              <PhoneCall size={24} color="#f47629" weight="bold" />
-              <span>+97022928182</span>
-            </div>
-            <div>
-              {" "}
-              <EnvelopeSimple size={24} color="#f47629" weight="bold" />
-              <span>hepco@mail.com</span>
-            </div>
-          </div>
-        </div>
-        <div className="header-bottom">
-          <div className="menu">
-            <div className="logo">
-              <img src={logo} alt="" width={113} height={113} />
-            </div>
-            <Link to="/home" style={{ color: "black", textDecoration: "none" }}>
-              <span>الرئيسية</span>
-            </Link>
-            <Link
-              to="/eservices"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <span>الخدمات</span>
-            </Link>{" "}
-            <Link style={{ color: "black", textDecoration: "none" }}>
-              <span>الاخبار</span>
-            </Link>{" "}
-            <Link
-              to="/view-subscription"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <span> اشتراكاتي</span>
-            </Link>{" "}
-            <Link
-              to="/view-application"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <span>طلباتي </span>
-            </Link>
-            <Link
-              to="/eservices"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <span> اقساطي </span>
-            </Link>
-            <Link
-              to="/eservices"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <span>استهلاكي</span>
-            </Link>
-            <Link
-              to="/eservices"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <span>فواتيري </span>{" "}
-            </Link>{" "}
-            <Link style={{ color: "black", textDecoration: "none" }}>
-              <span>اتصل بنا</span>
-            </Link>{" "}
-          </div>
-          <div className="login-btn">
-            <button
-              className="button-5"
-              onClick={() => (window.location.href = "login")}
-            >
-              تسجيل الخروج
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-export default Customer_Dashboard;
+//           <div className="right">
+//             <div>
+//               {" "}
+//               <PhoneCall size={24} color="#f47629" weight="bold" />
+//               <span>+97022928182</span>
+//             </div>
+//             <div>
+//               {" "}
+//               <EnvelopeSimple size={24} color="#f47629" weight="bold" />
+//               <span>hepco@mail.com</span>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="header-bottom">
+//           <div className="menu">
+//             <div className="logo">
+//               <img src={logo} alt="" width={113} height={113} />
+//             </div>
+//             <Link to="/home" style={{ color: "black", textDecoration: "none" }}>
+//               <span>الرئيسية</span>
+//             </Link>
+//             <Link
+//               to="/eservices"
+//               style={{ color: "black", textDecoration: "none" }}
+//             >
+//               <span>الخدمات</span>
+//             </Link>{" "}
+//             <Link style={{ color: "black", textDecoration: "none" }}>
+//               <span>الاخبار</span>
+//             </Link>{" "}
+//             <Link
+//               to="/view-subscription"
+//               style={{ color: "black", textDecoration: "none" }}
+//             >
+//               <span> اشتراكاتي</span>
+//             </Link>{" "}
+//             <Link
+//               to="/view-application"
+//               style={{ color: "black", textDecoration: "none" }}
+//             >
+//               <span>طلباتي </span>
+//             </Link>
+//             <Link
+//               to="/eservices"
+//               style={{ color: "black", textDecoration: "none" }}
+//             >
+//               <span> اقساطي </span>
+//             </Link>
+            
+//             <Link
+//               to="/eservices"
+//               style={{ color: "black", textDecoration: "none" }}
+//             >
+//               <span>فواتيري </span>{" "}
+//             </Link>{" "}
+//             <Link style={{ color: "black", textDecoration: "none" }}>
+//               <span>اتصل بنا</span>
+//             </Link>{" "}
+//           </div>
+//           <div className="login-btn">
+//             <button
+//               className="button-5"
+//               // onClick={() => (window.location.href = "login")}
+//               onClick={logout}
+//             >
+//               تسجيل الخروج
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//       {/* <Slider />
+//       <Eservices/>
+//       <SomeNews/> */}
+//     </div>
+//   );
+// };
+// export default Customer_Dashboard;

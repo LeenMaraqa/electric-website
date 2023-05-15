@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import Customer_Dashboard from "../../../pages/customer-Dashboard/customer-Dashboard.page";
+//import Customer_Dashboard from "../../../pages/customer-Dashboard/customer-Dashboard.page";
 import "./view-subscription.css"
+import Header from "../../header/header.component";
+
 const View_Subscription = () => {
   const [customerSubscriptions, setCustomerSubscriptions] = useState([]);
   const userId = localStorage.getItem("userId");
@@ -26,10 +28,9 @@ const View_Subscription = () => {
     fetchSubscriptions();
   }, []);
  
-
   return (
     <div className="customer-info-wrapper">
-      <Customer_Dashboard />
+      <Header />
       <div className="customer-info">
         <table className="">
           {" "}

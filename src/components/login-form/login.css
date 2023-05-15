@@ -1,14 +1,18 @@
 .login-page {
+  /* background-color: chartreuse; */
+
   display: flex;
   align-items: center;
   align-content: space-between;
   justify-content: center;
-  /* height: 400px; */
-  direction: rtl;  
+  height: 70vh;
+  width: 120vh;
+  direction: rtl; 
+  /* margin: 40px 80px;  */
 }
 
 .login-field input[type="number"],input[type="email"],input[type="password"] {
-  width: 550px;
+  width: 500px;
   padding: 12px 20px;
   margin: 25px 0;
   display: inline-block;
@@ -21,10 +25,11 @@
 .login-submit .button-5 {
   width: 40%;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 15px 0;
   border: none;
   cursor: pointer;
   border: 1px solid #f47629;
+  direction: ltr;
 }
 h2 {
   text-align: center;

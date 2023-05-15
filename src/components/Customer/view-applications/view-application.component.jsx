@@ -1,18 +1,20 @@
-import Customer_Dashboard from "../../../pages/customer-Dashboard/customer-Dashboard.page";
+//import Customer_Dashboard from "../../../pages/customer-Dashboard/customer-Dashboard.page";
 import { useState, useEffect } from "react";
+import Header from "../../header/header.component";
 const View_Application = () => {
   const [customerApp, setCustomerApp] = useState([]);
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   const fetchCustomerApp = async () => {
     const response = await fetch(
-      "http://localhost:5000/api/customers/applications",{
-      
+      "http://localhost:5000/api/customers/applications",
+      {
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'userid': userId,
+          Authorization: `Bearer ${token}`,
+          userid: userId,
         },
-      });
+      }
+    );
     console.log(response);
     const jsonData = await response.json();
     setCustomerApp(jsonData);
@@ -24,7 +26,7 @@ const View_Application = () => {
   }, []);
   return (
     <div className="customer-info-wrapper">
-      <Customer_Dashboard />
+      <Header />
       <div className="customer-info test">
         <table className="">
           {" "}
@@ -39,8 +41,7 @@ const View_Application = () => {
               {/* <th>الموظف المسؤول</th> */}
             </tr>
           </thead>
-
-<tbody>
+          <tbody>
             {customerApp.map((data) => (
               <tr key={data.RequestID}>
                 <td>{data.RequestID}</td>
