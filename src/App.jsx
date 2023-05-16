@@ -24,6 +24,7 @@ import Admin_Dashboard from "./pages/Admin-Dashboard/admin-Dashboard.paje";
 import PRE_Dashboard from "./pages/PRE-Dashboard/PRE-Dashboard.page";
 import SignUpPage from "./pages/signup/signup.page";
 import View_Bills from "./components/Customer/view-bills/view-bills.component";
+import View_Installments from "./components/Customer/view-installments/view-installments.component";
 function App() {
   return (
     <div className="App">
@@ -54,6 +55,7 @@ function App() {
           <Route path="/view-subscription" element={<View_Subscription />} />
           <Route path="/view-application" element={<View_Application />} />
           <Route path="/view-bills" element={<View_Bills />} />
+          <Route path="/view-installments" element={<View_Installments />} />
 
           <Route path="Admin_Dashboard" element={<Admin_Dashboard />} />
           <Route path="PRE_Dashboard" element={<PRE_Dashboard />} />
