@@ -9,9 +9,7 @@ import cover from "../../images/logincover15.png";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-
   const userIDRef = useRef();
-
   const userPasswordRef = useRef();
   const [loginMessage, setLoginMessage] = useState("");
   // const [idErrorr, setIdErrorr] = useState("");
@@ -37,27 +35,29 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ id, password }),
       });
-      console.log("loginMessage try befor response.ok", loginMessage);
-
+      // console.log("loginMessage try befor response.ok", loginMessage);
+      // console.log("response", response);
       if (response.ok) {
         const responseData = await response.json();
-        console.log("test", responseData.message);
-        console.log("responseData");
-        if (responseData == "") {
-          console.log("invalid ID");
-        }
-        setLoginMessage(responseData.message); 
+        // console.log("responseData", responseData);
+        // console.log("test", responseData.message);
+        // console.log("responseData");
+        // if (responseData == "") {
+        //   console.log("invalid ID");
+        // }//*
+        setLoginMessage(responseData.message);
         const { userId, token, role } = responseData;
 
         localStorage.setItem("userId", userId);
         localStorage.setItem("token", token);
         localStorage.setItem("role", role);
-        console.log("loginMessage try if response.ok", loginMessage);
+        // console.log("loginMessage try if response.ok", loginMessage);
 
         const userRole = localStorage.getItem("role");
         if (userRole === "Admin") {
           navigate("/Admin_Dashboard");
         } else if (userRole === "customer") {
+          // console.log("cus")
           navigate("/home");
           window.location.reload();
         } else if (userRole === "CSE") {
@@ -67,15 +67,22 @@ const LoginPage = () => {
         } else {
           navigate("/");
         }
-        console.log("loginMessage befor else", loginMessage);
-      } else {
-        const responseData = await response.json();
-        setLoginMessage(responseData.message); 
-        console.log("loginMessage else", loginMessage);
+        // console.log("loginMessage befor else", loginMessage);
+      }
+      // else {
+      //   const responseData = await response.json();
+      //   setLoginMessage(responseData.message);
+      //   console.log("loginMessage else", loginMessage);
+      // }
+      else if (response.status === 401) {
+        console.log("Wrong password");
+      } else if (response.status === 404) {
+        // ID not found
+        console.log("You don't have an account");
       }
     } catch (error) {
       console.error(error);
-      setLoginMessage("An error occurred. Please try again."); 
+      setLoginMessage("An error occurred. Please try again.");
     }
   };
 
@@ -128,11 +135,11 @@ const LoginPage = () => {
               fontWeight: "lighter",
               fontSize: "13px",
             }}
-            to="/home"
+            to="/signup"
           >
             ليس لديك حساب؟ إنشاء حساب جديد
           </Link>
-          {/* <p>{loginMessage}</p> // Display login message in component */}
+          {/* <p>{loginMessage}</p>  */}
         </form>
         {/* <img className="login-image" src={cover} width={650} height={477} /> */}
       </div>
