@@ -97,13 +97,13 @@ const Header = () => {
                 <span>طلباتي </span>
               </Link>
               <Link
-                to="/eservices"
+                to="/view-installments"
                 style={{ color: "black", textDecoration: "none" }}
               >
                 <span> اقساطي </span>
               </Link>
               <Link
-                to="/eservices"
+                to="/view-bills"
                 style={{ color: "black", textDecoration: "none" }}
               >
                 <span>فواتيري </span>{" "}

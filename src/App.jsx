@@ -23,6 +23,7 @@ import View_Application from "./components/Customer/view-applications/view-appli
 import Admin_Dashboard from "./pages/Admin-Dashboard/admin-Dashboard.paje";
 import PRE_Dashboard from "./pages/PRE-Dashboard/PRE-Dashboard.page";
 import SignUpPage from "./pages/signup/signup.page";
+import View_Bills from "./components/Customer/view-bills/view-bills.component";
 function App() {
   return (
     <div className="App">
@@ -52,6 +53,8 @@ function App() {
           {/* <Route path="/customer_Dashboard" element={<Customer_Dashboard />} /> */}
           <Route path="/view-subscription" element={<View_Subscription />} />
           <Route path="/view-application" element={<View_Application />} />
+          <Route path="/view-bills" element={<View_Bills />} />
+
           <Route path="Admin_Dashboard" element={<Admin_Dashboard />} />
           <Route path="PRE_Dashboard" element={<PRE_Dashboard />} />
           <Route path="/signup" element={<SignUpPage />} />
