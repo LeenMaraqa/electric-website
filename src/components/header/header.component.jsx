@@ -7,7 +7,6 @@ import { useState } from "react";
 import LoginForm from "../login-form/login-form.component";
 import { Button, Modal } from "antd";
 
-
 const userId = localStorage.getItem("userId");
 const role = localStorage.getItem("role");
 console.log(userId);
@@ -17,7 +16,6 @@ const Header = () => {
 
   return (
     <div className="header">
-      
       <div className="header-top">
         <div className="left">
           <span>شارع عين خير الدين</span>

@@ -5,6 +5,7 @@ import { Users, HouseLine, SignOut, UserPlus } from "phosphor-react";
 import "./admin-Dashboard.css";
 import { useState } from "react";
 import AddEmp from "../../components/admin/add-emp/addEmp.component";
+import { handleLogout } from "../../components/logout/logout.component"
 
 const Admin_Dashboard = () => {
   const [employee, setEmployee] = useState([]);
@@ -80,7 +81,7 @@ const Admin_Dashboard = () => {
           <span>
             <SignOut size={24} color="#f4f2f0" weight="fill" />
           </span>
-          <span className="CSE-dashboard-btn">تسجيل الخروج </span>
+          <span className="CSE-dashboard-btn" onClick={handleLogout}>تسجيل الخروج </span>
         </div>
       </div>
       <div>

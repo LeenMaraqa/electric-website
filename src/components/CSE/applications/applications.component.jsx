@@ -56,7 +56,7 @@ const Applications = () => {
         الطلبات
       </button>
       {applications.length > 0 ? (
-        <div className="info appInfo" >
+        <div className="info appInfo">
           {" "}
           <table>
             <thead>

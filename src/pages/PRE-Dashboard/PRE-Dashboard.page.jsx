@@ -14,6 +14,7 @@ import { useState } from "react";
 import AddReport from "../../components/PRE/add-report.component"
 import AddNews from "../../components/PRE/add-news.component"
 
+import { handleLogout } from "../../components/logout/logout.component"
 
 const PRE_Dashboard = () => {
   return (
@@ -57,7 +58,7 @@ const PRE_Dashboard = () => {
           <span>
             <SignOut size={24} color="#f4f2f0" weight="fill" />
           </span>
-          <span className="CSE-dashboard-btn">تسجيل الخروج </span>
+          <span className="CSE-dashboard-btn" onClick={handleLogout}>تسجيل الخروج </span>
         </div>
       </div>
     </div>
