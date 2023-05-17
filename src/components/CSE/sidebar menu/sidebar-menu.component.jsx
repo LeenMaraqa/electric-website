@@ -1,6 +1,8 @@
 import "./sidebar-menu.css";
 import Customers from "../customers/customers.component";
 import Applications from "../applications/applications.component";
+import { handleLogout } from "../../logout/logout.component";
+
 import {
   SquaresFour,
   Users,
@@ -48,7 +50,7 @@ const SidebarMenu = () => {
           <Applications />
         </span>
       </div>
-      <div className="CSE-dashboard-item">
+      {/* <div className="CSE-dashboard-item">
         <span>
           <CalendarCheck size={24} color="#f4f2f0" weight="fill" />
         </span>
@@ -59,13 +61,13 @@ const SidebarMenu = () => {
           <Coins size={24} color="#f4f2f0" weight="fill" />
         </span>
         <span className="CSE-dashboard-btn">المعاملات المالية</span>
-      </div>
+      </div> */}
       <div className="CSE-dashboard-item">
         <span>
           {/* <HandCoins size={24} color="#f4f2f0" weight="fill" /> */}
           <SignOut size={24} color="#f4f2f0" weight="fill" />
         </span>
-        <span className="CSE-dashboard-btn">تسجيل الخروج </span>
+        <span className="CSE-dashboard-btn" onClick={handleLogout}>تسجيل الخروج </span>
       </div>
     </div>
   );

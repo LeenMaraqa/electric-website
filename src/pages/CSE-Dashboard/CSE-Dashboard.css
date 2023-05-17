@@ -161,7 +161,7 @@ width: 80%;
   background-color: white;
 }
 div.info{
-  position: relative;
+  /* position: relative; */
   /* right: 80px; */
   bottom: 110px;
   /* overflow-x: scroll; */
@@ -173,13 +173,36 @@ div.info{
 }
 div.appInfo{
   /* bottom: 200px; */
-  top: -220px;
+  top: -350px;
+  /* top:200px; */
   /* right: 180px; */
   /* overflow: scroll; */
+
+ 
 }
+
 
 div.searchResult{
   background-color: #dddddd;
   top: 10px;
   right: 32px;
+}
+.customerInfo{
+  top: -240px;
+}
+div.info .th{
+  padding-right: 120px;
+}
+div.info .thType{
+  padding-right: 40px;
+}
+.empData th{
+  padding-right: 70px;
+}
+.appInfo select{
+  width: 115px;
+}
+.appInfo > table{
+  overflow-y: scroll;
+  /* height: 200px; */
 }

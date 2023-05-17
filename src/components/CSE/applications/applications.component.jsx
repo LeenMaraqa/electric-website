@@ -51,12 +51,12 @@ const Applications = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <button className="CSE-dashboard-btn" onClick={fetchApplications}>
         الطلبات
       </button>
       {applications.length > 0 ? (
-        <div className="info appInfo">
+        <div className="info appInfo" >
           {" "}
           <table>
             <thead>
@@ -64,9 +64,9 @@ const Applications = () => {
                 <th>رقم الطلب</th>
                 <th>اسم مقدم الطلب </th>
                 {/* <th> رقم الخدمة</th> */}
-                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;نوع الطلب</th>
+                <th className="thType">نوع الطلب</th>
                 <th> رقم هاتف مقدم الطلب </th>
-                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; العنوان</th>
+                <th> العنوان</th>
                 {/* <th>  السبب</th> */}
                 <th>حالة الطلب</th>
                 <th>تاريخ تقديم الطلب</th>

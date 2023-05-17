@@ -1,0 +1,29 @@
+.view-news {
+  width: 1340px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 45px 0px;
+  direction: rtl;
+}
+.news-item {
+  width: 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  background-color: #f5f5f5;
+}
+.news-cover-image {
+  width: 300px;
+  height: 200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* object-fit: cover; */
+}
+.new-title {
+  padding: 7px 15px;
+}

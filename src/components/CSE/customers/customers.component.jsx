@@ -18,7 +18,7 @@ const Customers = () => {
         المشتركين
       </button>
       {customers.length > 0 ? (
-        <div className="info">
+        <div className="info customerInfo">
           <table className="data">
             {" "}
             <thead>
@@ -26,7 +26,7 @@ const Customers = () => {
                 <th>رقم المشترك</th>
                 <th>اسم المشترك</th>
                 <th>رقم الهاتف</th>
-                <th>العنوان</th>
+                <th className="th">العنوان</th>
                 <th>نوع الاشتراك</th>
                 <th>حالة الاشتراك</th>
               </tr>

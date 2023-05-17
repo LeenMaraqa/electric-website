@@ -25,6 +25,9 @@ import PRE_Dashboard from "./pages/PRE-Dashboard/PRE-Dashboard.page";
 import SignUpPage from "./pages/signup/signup.page";
 import View_Bills from "./components/Customer/view-bills/view-bills.component";
 import View_Installments from "./components/Customer/view-installments/view-installments.component";
+import View_News from "./pages/view-news/view-news.page";
+import View_Reports from "./pages/view-reports/view-reports.page";
+import NewsDetails from "./pages/news details/news-details.page";
 function App() {
   return (
     <div className="App">
@@ -56,11 +59,12 @@ function App() {
           <Route path="/view-application" element={<View_Application />} />
           <Route path="/view-bills" element={<View_Bills />} />
           <Route path="/view-installments" element={<View_Installments />} />
-
+          <Route path="/view-news" element={<View_News />} />
+          <Route path="/view-news/:id" element={<NewsDetails/>} />
+          <Route path="/view-reports" element={<View_Reports />} />
           <Route path="Admin_Dashboard" element={<Admin_Dashboard />} />
           <Route path="PRE_Dashboard" element={<PRE_Dashboard />} />
           <Route path="/signup" element={<SignUpPage />} />
-
         </Routes>
       </BrowserRouter>
     </div>

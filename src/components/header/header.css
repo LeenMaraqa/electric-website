@@ -41,6 +41,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: white;
 }
 .logo {
   /* width: 150px; */
@@ -120,9 +121,3 @@
 .customer_header{
   display: contents;
 }
-/* .loginModal{
-  position: fixed;
-  height: 600px;
-  width: 1200px;
-  left: 0;
-} */
