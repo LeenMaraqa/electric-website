@@ -5,7 +5,7 @@ import MoreDetails from "../more details/moreDetails.component";
 import user1 from "../../../images/user1.png";
 const Applications = () => {
   const [applications, setApplications] = useState([]);
-  const [status, setStatus] = useState("");
+  // const [status, setStatus] = useState("");
   const empNum = localStorage.getItem("userId");
   // console.log("empnum : ",empNum);
   const fetchApplications = async () => {

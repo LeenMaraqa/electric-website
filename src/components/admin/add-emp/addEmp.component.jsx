@@ -31,11 +31,12 @@ const AddEmp = () => {
     const { name, value } = e.target;
     setEmpData({ ...empData, [name]: value });
   };
-  
+
   const [phoneNumError, setPhoneNumError] = useState("");
   const [idError, setIdError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handlePhoneNumChange = (event) => {
     const value = event.target.value;
@@ -87,14 +88,14 @@ const AddEmp = () => {
       empData.phoneNum &&
       empData.password &&
       phoneNumError === "" &&
-      idError === ""&&
-      passwordError==""//passwordError
+      idError === "" &&
+      passwordError == "" //passwordError
     ) {
       setIsValid(true);
     } else {
       setIsValid(false);
     }
-  }, [empData, phoneNumError, idError,passwordError]);//passwordError
+  }, [empData, phoneNumError, idError, passwordError]); //passwordError
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -122,9 +123,11 @@ const AddEmp = () => {
         }
       );
       if (response.status === 201) {
-        alert("تمت اضافة الموظف بنجاح");
+        setErrorMessage("تمت اضافة الموظف بنجاح");
       } else {
-        alert("حدثت مشكلة في اضافة الموظف يرجى المحاولة مرة اخرى");
+        // setErrorMessage("حدثت مشكلة في اضافة الموظف يرجى المحاولة مرة اخرى");
+        setErrorMessage("يوجد حساب مسجل بالفعل باستخدام رقم الهوية المقدم");
+        console.log(errorMessage);
       }
     } catch (error) {
       console.log("An error occurred while submitting the form:", error);
@@ -201,7 +204,7 @@ const AddEmp = () => {
               />
               {idError && (
                 <p className="validation_message">
-                  يجب ان يتكون رقم الهوية من 10 خانات
+                  يجب ان يتكون رقم الهوية من 9 خانات
                 </p>
               )}
             </div>
@@ -212,12 +215,11 @@ const AddEmp = () => {
                 name="password"
                 value={empData.password}
                 onChange={handlePasswordChange}
-                required  
+                required
+                // width={500}
               />
               {passwordError && (
-                <p className="validation_message">
-                 {passwordError}
-                </p>
+                <p className="validation_message">{passwordError}</p>
               )}
             </div>
             {/* <div>
@@ -239,6 +241,10 @@ const AddEmp = () => {
                 <option value="Admin"> IT</option>
               </select>
             </div>
+            {errorMessage && (
+              <p className="validation_message">{errorMessage}</p>
+            )}
+
             <button disabled={!isValid} className="addbtn" type="submit">
               اضافة{" "}
             </button>

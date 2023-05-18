@@ -32,7 +32,7 @@ const View_Reports = () => {
           {reports.map((report) => (
             <div
               className="reports-item"
-              key={report.id}
+              key={report.Id}
               onClick={() => openReportPDF(report.pdfReport)}
             >
               <img

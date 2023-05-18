@@ -31,7 +31,6 @@ const CSE_Dashboard = () => {
   };
   return (
     <div className="CSE-container">
-      {/* <h1>CSE Dashboard</h1> */}
       <SidebarMenu />
       {/* <Customers /> */}
       {/* <Applications /> */}
@@ -52,11 +51,10 @@ const CSE_Dashboard = () => {
             />
             {/* <MagnifyingGlass size={19} color="#8d8a86" weight="bold" /> */}
           </div>
-          <div className="header-user">
+          {/* <div className="header-user">
             <span className="header-user-name">لين مرقه</span> &nbsp; &nbsp;
             <img src={user} />
-            {/* alt="User Image" */}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="content">

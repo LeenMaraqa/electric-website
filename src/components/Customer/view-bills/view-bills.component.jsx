@@ -8,7 +8,6 @@ const View_Bills = () => {
   const fetchBills = async () => {
     const response = await fetch(
        "",{
-
       headers: {
         'Authorization': `Bearer ${token}`,
         'userid': userId,

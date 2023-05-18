@@ -1,4 +1,6 @@
-.addEmpForm input,
+.addEmpForm input[type="password"],
+.addEmpForm input[type="text"],
+.addEmpForm input[type="number"],
 select {
   box-sizing: border-box;
   width: 100%;
@@ -14,11 +16,12 @@ select {
   margin: 0px;
   margin-bottom: 10px;
 }
+
 .addEmpForm label {
   padding: 10px 6px;
   display: inline-block;
 }
-.validation_message{
+.validation_message {
   color: red;
 }
 button.addbtn[disabled] {

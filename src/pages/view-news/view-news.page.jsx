@@ -14,7 +14,7 @@ const View_News = () => {
   const fetchNews = async () => {
     try {
       const response = await fetch(
-        "https://my.api.mockaroo.com/news/123.json?key=3f67f180"
+        "https://my.api.mockaroo.com/news.json?key=f4868e30"
       );
       const data = await response.json();
       setNews(data);
@@ -38,7 +38,7 @@ const View_News = () => {
           {news.map((newsItem) => (
             <div
               className="news-item"
-              key={newsItem.id}
+              key={newsItem.Id}
               onClick={() => handleNewsSelect(newsItem)}
             >
               <img

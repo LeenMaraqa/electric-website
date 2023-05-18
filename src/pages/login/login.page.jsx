@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/header/header.component";
 import { useState, useRef } from "react";
 import cover from "../../images/logincover15.png";
-// import cover from "../../images/service2.png";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -16,13 +15,6 @@ const LoginPage = () => {
   // const [passwordError, setPasswordError] = useState("");
   // const[userID,setUserID]=useState("");
   const handleSubmit = async (e) => {
-    // if (userIDRef.length !== 9) {
-    //   setIdErrorr(" رقم الهوية يتكون من 9 خانات ");
-    //   // alert("4564");
-    //   // return;
-    // } else {
-    //   setIdErrorr(false);
-    // }
     e.preventDefault();
     const id = userIDRef.current.value;
     const password = userPasswordRef.current.value;
@@ -35,29 +27,20 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ id, password }),
       });
-      // console.log("loginMessage try befor response.ok", loginMessage);
-      // console.log("response", response);
+
       if (response.ok) {
         const responseData = await response.json();
-        // console.log("responseData", responseData);
-        // console.log("test", responseData.message);
-        // console.log("responseData");
-        // if (responseData == "") {
-        //   console.log("invalid ID");
-        // }//*
         setLoginMessage(responseData.message);
         const { userId, token, role } = responseData;
 
         localStorage.setItem("userId", userId);
         localStorage.setItem("token", token);
         localStorage.setItem("role", role);
-        // console.log("loginMessage try if response.ok", loginMessage);
 
         const userRole = localStorage.getItem("role");
         if (userRole === "Admin") {
           navigate("/Admin_Dashboard");
         } else if (userRole === "customer") {
-          // console.log("cus")
           navigate("/home");
           window.location.reload();
         } else if (userRole === "CSE") {
@@ -67,7 +50,6 @@ const LoginPage = () => {
         } else {
           navigate("/");
         }
-        // console.log("loginMessage befor else", loginMessage);
       }
       // else {
       //   const responseData = await response.json();
@@ -75,22 +57,19 @@ const LoginPage = () => {
       //   console.log("loginMessage else", loginMessage);
       // }
       else if (response.status === 401) {
+        setLoginMessage("كلمة المرور غير صحيحة يرجى المحاولة مرة اخرى");
         console.log("Wrong password");
       } else if (response.status === 404) {
-        // ID not found
-        console.log("You don't have an account");
+        setLoginMessage("يوجد حساب مسجل بالفعل باستخدام رقم الهوية المقدم");
       }
     } catch (error) {
       console.error(error);
-      setLoginMessage("An error occurred. Please try again.");
     }
   };
 
   return (
     <div>
-      <Header />
       <div className="login-content">
-        {/* <LoginForm onLogin={handleLogin} /> */}
         <form onSubmit={handleSubmit} className="login-form">
           <div>
             {" "}
@@ -123,6 +102,7 @@ const LoginPage = () => {
               required
             />
           </div>
+          {loginMessage && <p className="validation_message">{loginMessage}</p>}
           <div className="login-submit">
             <button className="button-5" type="submit">
               تسجيل الدخول
@@ -141,7 +121,7 @@ const LoginPage = () => {
           </Link>
           {/* <p>{loginMessage}</p>  */}
         </form>
-        {/* <img className="login-image" src={cover} width={650} height={477} /> */}
+        <img className="login-image" src={cover} width={850} height={625} />
       </div>
     </div>
   );

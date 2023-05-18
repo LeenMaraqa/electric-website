@@ -16,11 +16,8 @@ const Admin_Dashboard = () => {
       "http://localhost:5000/api/employees"
     );
     const employeeData = await response.json();
-    console.log("employeeData", employeeData);
     setEmployee(employeeData.filter((employee) => !employee.endDate));
-    console.log("employee: ", employee);
   };
-  //https://my.api.mockaroo.com/archEmp/${empNum}.json?key=f4868e30&__method=PUT
   const archiveEmployee = async (EmployeeID) => {
     try {
       const response = await fetch(
@@ -34,8 +31,6 @@ const Admin_Dashboard = () => {
           }),
         }
       );
-      console.log(EmployeeID);
-      console.log(endDate);
       const test = await response.json();
       setEmployee(
         employee.filter((archiveEmp) => archiveEmp.EmployeeID !== EmployeeID)

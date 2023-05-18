@@ -14,7 +14,7 @@ const SomeNews = () => {
   const fetchNews = async () => {
     try {
       const response = await fetch(
-       "https://my.api.mockaroo.com/news/123.json?key=3f67f180"
+       "https://my.api.mockaroo.com/news.json?key=f4868e30"
 );
       const data = await response.json();
       setNews(data);

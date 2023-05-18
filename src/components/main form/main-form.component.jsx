@@ -141,7 +141,7 @@ const MainForm = (props) => {
             value={appInfo.serviceID}
             onChange={handleInput}
             type="number"
-            placeholder="01/01/99999"
+            placeholder=""
           />
           <label>
             <b>رقم الهاتف</b>
