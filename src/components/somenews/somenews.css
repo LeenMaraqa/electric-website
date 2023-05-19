@@ -1,14 +1,15 @@
 .somenews {
-  margin: 100px ;
+  margin: 50px 100px;
+  padding-top: 40px;
   width: auto;
-  height: 800px;
+  /* height: 10vh; */
   direction: rtl;
 }
 .news {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  height: 800px;
+  height: 120vh;
   width: 700px;
   align-items: center;
 }
@@ -18,12 +19,13 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  
 }
 .title {
-  font-weight: 700;
+  font-weight: 600;
   font-size: large;
   margin: 10px;
+  text-decoration: none;
+  color: #025464;
 }
 .title :hover {
   color: #f47629;
@@ -35,4 +37,12 @@
 .example > img {
   margin: 0px;
   padding: 0px;
+}
+.news-component-title{
+  /* color: #f47629; */
+margin-bottom: 10px;
+font-weight: 700;
+font-size: 1.4rem;
+color: #025464;
+
 }

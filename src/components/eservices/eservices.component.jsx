@@ -6,46 +6,49 @@ import { Link } from "react-router-dom";
 const Eservices = () => {
   return (
     <div className="eservices-component">
-      <h3>الخدمات الالكترونية </h3>
+      <div className="eservice-title">الخدمات الالكترونية </div>
       <div className="wrapper-eservice">
         <div className="service1">
           <img src={service1} width={330} height={300} alt="" />
           <Link
             style={{ color: "black", textDecoration: "none" }}
             className="title"
+            to="/checkElectricityMeter"
           >
-            طلب فحص عداد
+          <div  className="app-title">طلب فحص عداد</div>  
           </Link>
-          <div>
+          {/* <div>
             {" "}
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis{" "}
-          </div>
+          </div> */}
         </div>
         <div className="service2">
           <img src={service2} width={330} height={300} alt="" />
           <Link
             style={{ color: "black", textDecoration: "none" }}
             className="title"
+            to="/streetLighting"
           >
-            طلب تركيب انارة للشارع
+          <div  className="app-title">طلب تركيب انارة للشارع</div>  
           </Link>
-          <div>
+          {/* <div>
             {" "}
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis{" "}
-          </div>
+          </div> */}
         </div>
         <div className="service3">
           <img src={service3} width={330} height={300} alt="" />
           <Link
             style={{ color: "black", textDecoration: "none" }}
             className="title"
+            to="/maintenance"
           >
-            طلب صيانة الاعمدة و الشيكات
+           <div className="app-title">طلب صيانة </div> 
           </Link>
-          <div>
+          {/* <div>
             {" "}
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis{" "}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

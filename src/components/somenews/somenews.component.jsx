@@ -34,7 +34,7 @@ const SomeNews = () => {
 
   return (
     <div className="somenews">
-      <h3> اخر الاخبار </h3>
+      <div className="news-component-title"> اخر الاخبار </div>
       <div className="news">
         {lastThreeNews.map((newsItem) => (
           
@@ -52,7 +52,6 @@ const SomeNews = () => {
             <div className="title">
               <Link
               onClick={() => handleNewsSelect(newsItem)} key={newsItem.id}
-                style={{ color: "black", textDecoration: "none" }}
                 className="title"
               >
                 {newsItem.title}{" "}

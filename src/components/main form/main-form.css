@@ -6,14 +6,14 @@
 }
 .main-form {
   direction: rtl;
-  width: 700px;
+  width: 600px;
   display: flex;
   flex-direction: column;
 }
 .main-form input[type="number"],
-input[type="text"],
-input[type="file"],
-input[type="image"] {
+.main-form input[type="text"],
+.main-form input[type="file"],
+.main-form input[type="image"]{
   width: 100%;
   padding: 12px 20px;
   margin: 25px 0;
@@ -22,12 +22,13 @@ input[type="image"] {
   box-sizing: border-box;
 }
 .optional {
-  direction: rtl;width: 700px;
+  direction: rtl;
+  width: 700px;
 }
-.optional [type="number"],
-input[type="text"],
-input[type="file"],
-input[type="image"] {
+.optional input[type="number"],
+.optional input[type="text"],
+.optional input[type="file"],
+.optional input[type="image"] {
   width: 100%;
   padding: 12px 20px;
   margin: 25px 0;

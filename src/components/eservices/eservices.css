@@ -1,5 +1,5 @@
 .eservices-component {
-  margin: 50px;
+  margin: 70px;
   width: auto;
   height: 400px;
   direction: rtl;
@@ -22,7 +22,23 @@
 }
 .title :hover {
   color: #f47629;
+
 }
 /* h3{
     color: #f47629 ;
 } */
+.app-title {
+  text-align: center;
+  width: 50vh;
+  /* color: #303442; */
+  /* margin: 0px 82px; */
+  color: #025464;
+
+}
+.eservice-title{
+  /* color: #f47629; */
+margin-bottom: 30px;
+font-weight: 700;
+font-size: 1.4rem;
+color: #025464;
+}

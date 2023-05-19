@@ -33,27 +33,67 @@ border: 1px solid grey;
     margin: 10px;
     margin-right: 20px;
     width: 270px;
+    color: #025464;
 }
 /* .wrapper>div>img{
  margin-left: 20px;
 } */
-.wrapper :hover{
-color: #ffffff;
-background-color: #ee9152;
-/* opacity: .6; */
+.service-desc h3:hover{
+    /* color: #ee9152;
+    color: black; */
+    color: #025464;
 }
 .about-services{
     display: flex;
-    width: 1000px;
+    width: 180vh;
+    flex-direction: row-reverse;
     justify-content: space-around;
-    margin: 40px 100px;
+    margin: 40px 120px;
 }
-.about-services>div{
+/* .about-services>div{
     margin: 100px;
     font-size: large;
-}
+} */
 .eservices-page>h2{
     text-align: right;
     margin-right: 60px;
     color: #ee9152;
+    color:#fb8332;
+}
+.service-desc span{
+    width: 95%;
+    font-size: .97rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+/* .wrapper :hover{
+    color: #ffffff;
+    background-color: #ee9152;
+    } */
+.about-services-desc{
+    direction: rtl;
+    color: #303442;
+    /* margin: 100px; */
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 70vh;
+    width: 65vh;
+    line-height:2.1;
+    margin-top: 10px;
+    color: #025464;
+    
+}
+.services-page-image{
+    width: 95vh;
+    height: 75vh;
+}
+.service-desc h3{
+    text-decoration: none;
+    color: #ee9152;
+    color:#fb8332
 }

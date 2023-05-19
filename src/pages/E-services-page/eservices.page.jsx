@@ -15,15 +15,20 @@ import Header from "../../components/header/header.component";
 const EservicesPage = () => {
   return (
     <div className="eservices-page">
-              <Header />
+      <Header />
 
       <div className="about-services">
-        <img src={servicesImage} alt="" />
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-          esse provident labore mollitia quod non itaque doloremque, aperiam
-          nostrum pariatur eum laudantium, voluptatibus tenetur corporis
-          voluptates ipsa ipsam? Dolorum, tenetur.
+        <img className="services-page-image" src={servicesImage} alt="" />
+        <div className="about-services-desc">
+          شركة كهرباء الخليل تعتبر الشركة الرائدة في مجال الخدمات الكهربائية.
+          نحن ملتزمون بتقديم خدمات متميزة لعملائنا. نحن نفهم أهمية الكهرباء في
+          حياتكم اليومية ونسعى جاهدين لتلبية احتياجاتكم وتوفير راحة البال
+          والموثوقية. تعتمد سمعتنا على خبرتنا الواسعة وكفاءتنا في تركيب وصيانة
+          الشبكات الكهربائية والعدادات وحل المشاكل الفنية بسرعة وفعالية. نحن
+          نهتم بتوفير طاقة كهربائية فعالة ومستدامة لمجتمعنا. نحرص على استخدام
+          أحدث التقنيات والممارسات الصديقة للبيئة لتحقيق الكفاءة العالية وتقليل
+          التكاليف. بالإضافة إلى ذلك، نحن ملتزمون بتعزيز الوعي بتوفير الطاقة
+          وتشجيع التوجه نحو استخدام مستدام للكهرباء.
         </div>
       </div>
       <h2>الخدمات الالكترونية</h2>
@@ -36,13 +41,13 @@ const EservicesPage = () => {
             <Link
               to="/checkElectricityMeter"
               style={{ color: "black", textDecoration: "none" }}
-            
             >
               <h3>طلب فحص عداد</h3>
             </Link>
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              {" "}
+              يمكنك من خلال هذه الخدمة التحقق من صحة قراءة العداد لضمان استهلاك
+              الكهرباء الصحيح
             </span>
           </div>
         </div>
@@ -59,8 +64,8 @@ const EservicesPage = () => {
               <h3>طلب تحويل من فاتورة الى كرت</h3>
             </Link>
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب تحويل طريقة الدفع من الفاتورة إلى الدفع عبر كرت مسبق الدفع
+              للكهرباء
             </span>
           </div>
         </div>
@@ -78,8 +83,8 @@ const EservicesPage = () => {
             </Link>
 
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب تغيير الاشتراك من تجاري إلى منزلي لضبط تكلفة الكهرباء وفقًا
+              للاستخدام المنزلي.
             </span>
           </div>
         </div>
@@ -95,11 +100,10 @@ const EservicesPage = () => {
               {" "}
               <h3>طلب نقل الاعمدة و الشبكات المعارضة للبناء</h3>
             </Link>
-
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
-            </span>
+              طلب نقل اعمدة الكهرباء المتعارضة مع عملية بناء ، أو الاعمدة التي
+              تميل للسقوط و تشكل خطر
+            </span>{" "}
           </div>
         </div>
         <div className="eservice">
@@ -116,8 +120,8 @@ const EservicesPage = () => {
             </Link>
 
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب إصلاح وتعزيز قدرة التيار الكهربائي للتغلب على مشكلة ضعف التيار
+              وضمان استقرار الكهرباء{" "}
             </span>
           </div>
         </div>
@@ -134,8 +138,8 @@ const EservicesPage = () => {
               <h3>طلب تركيب وحدة انارة للشارع</h3>
             </Link>{" "}
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب تركيب وحدة إنارة مخصصة لتوفير الإضاءة اللازمة في الشوارع
+              وتحسين الرؤية والسلامة للمارة
             </span>
           </div>
         </div>
@@ -153,8 +157,8 @@ const EservicesPage = () => {
             </Link>
 
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب خدمة لإصلاح وصيانة أنظمة الكهرباء والمعدات للحفاظ على أداء
+              موثوق وتجنب حدوث أعطال أو انقطاع في التيار الكهربائي.
             </span>
           </div>
         </div>
@@ -172,8 +176,8 @@ const EservicesPage = () => {
             </Link>
 
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب تحديث وتعديل المعلومات الشخصية للمستفيد من أجل تحديث البيانات
+              وضمان توصيل الخدمات الكهربائية وفقًا للبيانات الصحيحة
             </span>
           </div>
         </div>
@@ -190,8 +194,8 @@ const EservicesPage = () => {
               <h3>طلب تخفيض أقساط ديون الكهرباء</h3>
             </Link>
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب تقديم تسهيلات وتخفيض في مبالغ السداد المستحقة للديون
+              الكهربائية لتمكين المستفيد من تسديد الديون بطريقة مرنة وميسرة.
             </span>
           </div>
         </div>
@@ -205,12 +209,11 @@ const EservicesPage = () => {
               style={{ color: "black", textDecoration: "none" }}
             >
               {" "}
-              <h3>طلب تعديل التعرفة من مؤقت الى دائم</h3>
+              <h3>طلب تعديل حالة الاشتراك من مؤقت الى دائم</h3>
             </Link>
 
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب تحويل حالة الاشتراك الكهربائي من وضع مؤقت إلى وضع دائم
             </span>
           </div>
         </div>
@@ -227,8 +230,8 @@ const EservicesPage = () => {
               <h3>طلب اعتراض على تقدير بدل استهلاك خلال فترة عطل عداد</h3>
             </Link>{" "}
             <span>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. In optio
-              magni rem at.{" "}
+              طلب تصحيح التقدير المبني على استهلاك الكهرباء أثناء فترة عطل
+              العداد لتجنب الفواتير المبالغ فيها
             </span>
           </div>
         </div>
