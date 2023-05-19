@@ -1,0 +1,27 @@
+.report-news-form input[type="text"],
+.report-news-form input[type="number"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin-bottom: 10px;
+  font-family: "Readex Pro", sans-serif;
+  font-size: 0.75rem;
+}
+.report-news-form input {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.report-news-form label {
+  padding: 10px 6px;
+  display: block;
+  font-size: 0.9rem;
+  color: black;
+  font-weight: 500;
+}
+.validation_message {
+  color: red;
+}

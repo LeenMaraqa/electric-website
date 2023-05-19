@@ -3,6 +3,8 @@ import { useState } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 // import "../admin/add-emp/add-emp.css";
+import "./report-news-style.css"
+
 const AddNews = () => {
   const [open, setOpen] = useState(false);
   const showModal = () => {
@@ -76,9 +78,7 @@ const AddNews = () => {
         className="custom-modal"
       >
         <div>
-         
-
-          <form className="" onSubmit={handleSubmit}>
+          <form className="report-news-form" onSubmit={handleSubmit}>
             <div>
               <label>عنوان الخبر</label>
               <input
@@ -90,7 +90,6 @@ const AddNews = () => {
                 required
               />
             </div>
-
             <div>
               <label> قم بادخال محتوى الخبر </label>
               {/* 

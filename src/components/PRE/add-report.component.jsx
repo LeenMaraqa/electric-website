@@ -1,6 +1,7 @@
 import { Button, Modal } from "antd";
 import { useState } from "react";
 // import "../admin/add-emp/add-emp.css";
+import "./report-news-style.css"
 const AddReport = () => {
   const [open, setOpen] = useState(false);
   const showModal = () => {
@@ -54,7 +55,7 @@ const AddReport = () => {
         className="custom-modal"
       >
         <div>
-          <form onSubmit={handleSubmit}>
+          <form className="report-news-form" onSubmit={handleSubmit}>
             <div>
               {" "}
               <label>عنوان التقرير</label>
@@ -90,7 +91,7 @@ const AddReport = () => {
             </div>
 
             <button className="addbtn" type="submit">
-              Upload
+              نشر
             </button>
           </form>
         </div>
