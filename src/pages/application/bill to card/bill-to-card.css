@@ -1,0 +1,10 @@
+.aboutapp {
+    display: flex;
+    align-items: center;
+     /* margin-right: 200px; */
+   flex-direction: column;
+  }
+  /* .aboutapp h2{
+    margin: 35px 0px;
+    width: 480px;
+  } */

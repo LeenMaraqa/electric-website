@@ -76,6 +76,7 @@ const AddNews = () => {
         onCancel={handleCancel}
         footer={null}
         className="custom-modal"
+        // height={600}
       >
         <div>
           <form className="report-news-form" onSubmit={handleSubmit}>
@@ -104,7 +105,7 @@ const AddNews = () => {
                 name="body"
                 value={newsData.body}
                 onChange={handleInput}
-                style={{ height: "400px",margin:"30px 0px" }}
+                style={{ height: "350px",margin:"30px 0px" }}
               />
               <br />
             </div>

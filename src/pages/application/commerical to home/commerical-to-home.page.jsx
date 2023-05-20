@@ -10,7 +10,6 @@ const CommericalToHome = () => {
        <Header/>
       <div className="aboutapp">
         <h2>طلب تحويل نوع الاشتراك من تجاري الى منزلي   </h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
       </div>
       <MainForm type={type} />
     </div>

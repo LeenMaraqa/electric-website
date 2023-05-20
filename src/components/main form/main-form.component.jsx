@@ -121,7 +121,7 @@ const MainForm = (props) => {
       <form onSubmit={handleSubmit}>
         <div className="main-form">
           <label>
-            <b>اسم المشترك</b>
+            <b>اسم مقدم الطلب</b>
           </label>
           <input
             className=""

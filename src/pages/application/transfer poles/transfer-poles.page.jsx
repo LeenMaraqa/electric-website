@@ -12,7 +12,7 @@ const TransferPoles = () => {
        <Header/>
       <div className="aboutapp">
         <h2> طلب نقل الاعمدة و الشبكات المعارضة للبناء </h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
+        {/* <div>.... عزيزي المشترك نرجو من حضرتك </div> */}
       </div>
       <MainForm type={type} reason={reason} />
     </div>

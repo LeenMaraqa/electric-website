@@ -12,7 +12,7 @@ const TemporaryToPermanent = () => {
        <Header/>
       <div className="aboutapp">
         <h2> طلب تغيير التعرفة من مؤقت الى دائم</h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
+        {/* <div>.... عزيزي المشترك نرجو من حضرتك </div> */}
       </div>
       <MainForm type={type} reason={reason} />
     </div>

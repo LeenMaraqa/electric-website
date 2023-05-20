@@ -11,7 +11,7 @@ const Objection = () => {
        <Header/>
       <div className="aboutapp">
         <h2>طلب اعتراض على تقدير بدل استهلاك خلال فترة عطل عداد   </h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
+        {/* <div>.... عزيزي المشترك نرجو من حضرتك </div> */}
       </div>
       <MainForm type={type} reason ={reason} />
     </div>

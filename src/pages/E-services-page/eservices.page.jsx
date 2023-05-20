@@ -16,7 +16,6 @@ const EservicesPage = () => {
   return (
     <div className="eservices-page">
       <Header />
-
       <div className="about-services">
         <img className="services-page-image" src={servicesImage} alt="" />
         <div className="about-services-desc">

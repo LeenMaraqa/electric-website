@@ -13,7 +13,8 @@
 .main-form input[type="number"],
 .main-form input[type="text"],
 .main-form input[type="file"],
-.main-form input[type="image"]{
+.main-form input[type="image"], 
+.main-form button[type="submit"]{
   width: 100%;
   padding: 12px 20px;
   margin: 25px 0;
@@ -21,9 +22,10 @@
   /* border: 1px solid #ccc; */
   box-sizing: border-box;
 }
+
 .optional {
   direction: rtl;
-  width: 700px;
+  width: 600px;
 }
 .optional input[type="number"],
 .optional input[type="text"],
@@ -35,6 +37,9 @@
   display: inline-block;
   /* border: 1px solid #ccc; */
   box-sizing: border-box;
+}
+.send-btn{
+  margin-bottom: 200px;
 }
 /*
 

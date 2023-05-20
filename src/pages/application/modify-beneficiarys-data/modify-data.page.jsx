@@ -10,7 +10,7 @@ const ModifyData = () => {
        <Header/>
       <div className="aboutapp">
         <h2> طلب تعديل بيانات المستفيد </h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
+        {/* <div>.... عزيزي المشترك نرجو من حضرتك </div> */}
       </div>
       <MainForm type={type} />
     </div>

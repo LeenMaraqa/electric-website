@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../../../components/main form/main-form.css";
 import "../check elec meter/check-elec-meter.css";
 const WeakElecProblem = () => {
-  const type = "معالجة ضعف التيار";
+  const type = "معالجة مشكلة ضعف التيار";
   const reason = "sth";
   
   return (
@@ -12,7 +12,7 @@ const WeakElecProblem = () => {
        <Header/>
       <div className="aboutapp">
         <h2>طلب معالجة ضعف التيار </h2>
-        <div>.... عزيزي المشترك نرجو من حضرتك </div>
+        {/* <div>.... عزيزي المشترك نرجو من حضرتك </div> */}
       </div>
       <MainForm type={type} reason ={reason} />
     </div>
