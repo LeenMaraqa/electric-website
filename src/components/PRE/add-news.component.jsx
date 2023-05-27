@@ -1,9 +1,8 @@
 import { Button, Modal } from "antd";
 import { useState } from "react";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-// import "../admin/add-emp/add-emp.css";
-import "./report-news-style.css"
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import "./report-news-style.css";
 
 const AddNews = () => {
   const [open, setOpen] = useState(false);
@@ -18,12 +17,13 @@ const AddNews = () => {
     console.log(e);
     setOpen(false);
   };
+  const userId = localStorage.getItem("userId");
 
   const [newsData, setNewsData] = useState({
-    empNum: "",// ***/
+    empNum: "44",
     title: "",
     coverImage: null,
-    image: null, //mutiple
+    image: null,
     body: "",
   });
   const handleInput = (e) => {
@@ -37,10 +37,11 @@ const AddNews = () => {
       [name]: files[0],
     }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { empNum, title, image, body, coverImage } = newsData;
-    console.log(newsData);
+    console.log("newsData submit", newsData);
 
     const formDataToSend = new FormData();
     formDataToSend.append("empNum", empNum);
@@ -50,11 +51,13 @@ const AddNews = () => {
     formDataToSend.append("coverImage", coverImage);
 
     try {
-      const response = await fetch("", {
+      const response = await fetch("http://localhost:5000/api/advertisement", {
         method: "POST",
         body: formDataToSend,
       });
-
+      console.log(formDataToSend);
+      console.log("response : ", response);
+      console.log("newsData : ", newsData);
       if (response.ok) {
         alert("تم نشر الخبر");
       } else {
@@ -93,29 +96,35 @@ const AddNews = () => {
             </div>
             <div>
               <label> قم بادخال محتوى الخبر </label>
-              {/* 
-              <input
+              {/* <input
                 type="text"
-                height={50}
+                height={100}
                 name="body"
                 value={newsData.body}
                 onChange={handleInput}
               /> */}
-              <ReactQuill 
+              <textarea
                 name="body"
                 value={newsData.body}
                 onChange={handleInput}
-                style={{ height: "350px",margin:"30px 0px" }}
-              />
+                cols="61"
+                rows="15"
+              ></textarea>
+              {/* <ReactQuill
+                name="body"
+                value={newsData.body}
+                onChange={handleInput}
+                style={{ height: "350px", margin: "30px 0px" }}
+              /> */}
               <br />
             </div>
             <div>
               <label> صورة الغلاف</label>
               <input
                 type="file"
-                accept="image/jpeg, image/png"
+                accept="image/jpg, image/png"
                 name="coverImage"
-                onChange={handleInput}
+                onChange={handleImageChange}
                 required
               />
             </div>
@@ -123,9 +132,9 @@ const AddNews = () => {
               <label> صور اخرى تتعلق بالخبر</label>
               <input
                 type="file"
-                accept="image/jpeg, image/png"
+                accept="image/jpg, image/png"
                 name="image"
-                onChange={handleInput}
+                onChange={handleImageChange}
                 required
               />
             </div>

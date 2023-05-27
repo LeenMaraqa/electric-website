@@ -14,7 +14,7 @@
 .main-form input[type="text"],
 .main-form input[type="file"],
 .main-form input[type="image"], 
-.main-form button[type="submit"]{
+.main-form button[type="submit"],select,option{
   width: 100%;
   padding: 12px 20px;
   margin: 25px 0;
@@ -22,7 +22,11 @@
   /* border: 1px solid #ccc; */
   box-sizing: border-box;
 }
-
+.main-form select option{
+  color: black;
+  /* font-size: 1.8rem; */
+  /* font-weight: 600; */
+}
 .optional {
   direction: rtl;
   width: 600px;

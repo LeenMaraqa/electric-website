@@ -1,6 +1,6 @@
 .CSE-container {
   background-color: white;
-  /* position: fixed;
+ /* position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -175,12 +175,17 @@ div.appInfo {
 
 div.searchResult {
   background-color: #dddddd;
-  top: 10px;
-  right: 32px;
+  top: -10px;
+  right: 32px;  
+  /* height: 750px; */
+  overflow-y: scroll;
+  
 }
-.customerInfo {
-  top: -240px;
+div.searchResult >table>tbody>tr {
+height: 90px;  
+
 }
+
 div.info .th {
   padding-right: 120px;
 }

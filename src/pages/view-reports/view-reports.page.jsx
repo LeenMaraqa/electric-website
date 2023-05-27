@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header/header.component";
 import "./view-reports.css";
+
 const View_Reports = () => {
   const [reports, setReports] = useState([]);
-
   useEffect(() => {
     fetchReports();
   }, []);
 
   const fetchReports = async () => {
     try {
-      const response = await fetch(
-        "https://my.api.mockaroo.com/report.json?key=3f67f180"
-      );
+      const response = await fetch("http://localhost:5000/api/report");
       const data = await response.json();
-      setReports(data);
+      const reverseReport =data.reverse();
+      setReports(reverseReport);
+      console.log("response",response);
+      // console.log("report",reports);
+      console.log("data",data);
+      // console.log("pdf",data.pdf.data);
     } catch (error) {
       console.log("Error fetching reports:", error);
     }
   };
 
-  function openReportPDF(pdfReport) {
-    window.open(pdfReport, "_blank");
-  }
+  const openReportPDF = (pdfData) => {
+    console.log(pdfData);
+    window.open(pdfData);
+  };
+
+
 
   return (
     <div className="reports-page">
@@ -32,14 +38,15 @@ const View_Reports = () => {
           {reports.map((report) => (
             <div
               className="reports-item"
-              key={report.Id}
-              onClick={() => openReportPDF(report.pdfReport)}
+              key={report.ID}
+              onClick={() => openReportPDF(report.pdf)}
             >
-              <img
+              <div className="image-container"> <img
                 className="report-cover-image"
-                src={report.coverImage}
+                src={ `data:image/png;base64,${report.coverImage}`}
                 alt={report.title}
-              />
+              /></div>
+             
               <div className="report-title">{report.title}</div>
             </div>
           ))}
@@ -50,3 +57,4 @@ const View_Reports = () => {
 };
 
 export default View_Reports;
+

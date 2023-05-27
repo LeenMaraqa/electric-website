@@ -40,6 +40,7 @@ const View_Subscription = () => {
               <th>نوع الاشتراك </th>
               <th>العنوان </th>
               <th>حالة الاشتراك</th>
+              <th>نوع العقار</th>
               <th>تاريخ الاشتراك </th>
             </tr>
           </thead>
@@ -50,6 +51,7 @@ const View_Subscription = () => {
                 <td>{data.SubscriptionType}</td>
                 <td>{data.Address}</td>
                 <td>{data.SubscriptionStatus}</td>  
+                <td>{data.PropertyType}</td>  
                 <td>{data.createdAt}</td>
               </tr>
             ))}

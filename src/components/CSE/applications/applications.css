@@ -1,0 +1,19 @@
+/* .appInfo table thead > tr > th {
+  padding-top: 30px;
+} */
+/* .appInfo{
+    display: none;
+} */
+
+.table-container .ant-table {
+  font-size: .92rem; 
+  color: #333; 
+  font-family: "Readex Pro", sans-serif;
+}
+
+.table-container .ant-table-thead > tr > th {
+  font-weight: bold; 
+  background-color: #007a6f;
+  color: #fff;
+  border: none;
+}

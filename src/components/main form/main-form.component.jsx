@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./main-form.css";
 const MainForm = (props) => {
   const [appInfo, setAppInfo] = useState({
     applicantName: "",
     applicantPhoneNumber: "",
-    applicantAddress: "",
+    Address: "",
     //date: new Date().toDateString() + " " + new Date().toLocaleTimeString(),
     appStatus: "طلب جديد",
     appType: props.type,
@@ -32,12 +32,38 @@ const MainForm = (props) => {
       [name]: files[0],
     }));
   };
+
+  const [services, setServices] = useState([]);
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
+  const fetchSubscriptions = async () => {
+    const response = await fetch(
+      //   "https://my.api.mockaroo.com/view-subscription.json?key=f4868e30",{
+      "http://localhost:5000/api/customers/services",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          userid: userId,
+        },
+      }
+    );
+    console.log(response);
+
+    const jsonData = await response.json();
+    setServices(jsonData);
+    // console.log(typeof(services));
+    // console.log(typeof(jsonData));
+  };
+  useEffect(() => {
+    fetchSubscriptions();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const {
       applicantName,
       applicantPhoneNumber,
-      applicantAddress,
+      Address,
       appStatus,
       appType,
       reason,
@@ -58,7 +84,7 @@ const MainForm = (props) => {
       const formDataToSend = new FormData();
       formDataToSend.append("applicantName", applicantName);
       formDataToSend.append("applicantPhoneNumber", applicantPhoneNumber);
-      formDataToSend.append("applicantAddress", applicantAddress);
+      formDataToSend.append("Address", Address);
       formDataToSend.append("appStatus", appStatus);
       formDataToSend.append("appType", appType);
       formDataToSend.append("reason", reason);
@@ -82,11 +108,11 @@ const MainForm = (props) => {
         console.log("appInfo : ", appInfo);
         console.log("appInfo : ", response);
 
-        if (response.ok) {
-          alert("تم ارسال طلبك بنجاح");
-        } else {
-          alert("حدثت مشكلة في ارسال الطلب");
-        }
+        // if (response.ok) {
+        //   alert("تم ارسال طلبك بنجاح");
+        // } else {
+        //   alert("حدثت مشكلة في ارسال الطلب");
+        // }
       } catch (error) {
         console.log("An error occurred while submitting the form:", error);
       }
@@ -106,11 +132,11 @@ const MainForm = (props) => {
         console.log("response : ", response);
         console.log("appInfo : ", appInfo);
 
-        if (response.status === 200) {
-          alert("تم ارسال طلبك بنجاح");
-        } else {
-          alert("حدثت مشكلة في ارسال الطلب");
-        }
+        // if (response.status === 201) {
+        //   alert("تم ارسال طلبك بنجاح");
+        // } else {
+        //   alert("حدثت مشكلة في ارسال الطلب");
+        // }
       } catch (error) {
         console.log("An error occurred while submitting the form:", error);
       }
@@ -135,14 +161,27 @@ const MainForm = (props) => {
           <label>
             <b>رقم الخدمة</b>
           </label>
-          <input
+          {/* <input
             className=""
             name="serviceID"
             value={appInfo.serviceID}
             onChange={handleInput}
             type="number"
             placeholder=""
-          />
+          /> */}
+          <select
+            name="serviceID"
+            value={appInfo.serviceID}
+            onChange={handleInput}
+          >
+            <option value="">اختر الخدمة</option>
+
+            {services.map((service) => (
+              <option key={service.ServiceID} value={service.ServiceID}>
+                {service.ServiceID}
+              </option>
+            ))}
+          </select>
           <label>
             <b>رقم الهاتف</b>
           </label>
@@ -159,8 +198,8 @@ const MainForm = (props) => {
           </label>
           <input
             className=""
-            name="applicantAddress"
-            value={appInfo.applicantAddress}
+            name="Address"
+            value={appInfo.Address}
             onChange={handleInput}
             type="text"
             placeholder="يرجى توضيح اسم المنطقة و الشارع"
@@ -289,4 +328,3 @@ const MainForm = (props) => {
   );
 };
 export default MainForm;
-

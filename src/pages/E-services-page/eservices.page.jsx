@@ -13,6 +13,8 @@ import "./eservices.css";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/header/header.component";
 const EservicesPage = () => {
+  const userId = localStorage.getItem("userId");
+
   return (
     <div className="eservices-page">
       <Header />
@@ -37,7 +39,7 @@ const EservicesPage = () => {
             <img src={serv1} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
+            {/* <Link
               to="/checkElectricityMeter"
               style={{ color: "black", textDecoration: "none" }}
             >
@@ -45,6 +47,25 @@ const EservicesPage = () => {
             </Link>
             <span>
               {" "}
+              يمكنك من خلال هذه الخدمة التحقق من صحة قراءة العداد لضمان استهلاك
+              الكهرباء الصحيح
+            </span> */}
+            {userId ? (
+              <Link
+                to="/checkElectricityMeter"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب فحص عداد</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب فحص عداد</h3>
+              </Link>
+            )}
+            <span>
               يمكنك من خلال هذه الخدمة التحقق من صحة قراءة العداد لضمان استهلاك
               الكهرباء الصحيح
             </span>
@@ -56,12 +77,21 @@ const EservicesPage = () => {
             <img src={serv2} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/billToCard"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <h3>طلب تحويل من فاتورة الى كرت</h3>
-            </Link>
+            {userId ? (
+              <Link
+                to="/billToCard"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تحويل من فاتورة الى كرت</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تحويل من فاتورة الى كرت</h3>
+              </Link>
+            )}
             <span>
               طلب تحويل طريقة الدفع من الفاتورة إلى الدفع عبر كرت مسبق الدفع
               للكهرباء
@@ -73,14 +103,22 @@ const EservicesPage = () => {
             <img src={serv3} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/commercialToHome"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب تعديل التعرفة من تجاري الى منزلي</h3>
-            </Link>
-
+            {userId ? (
+              <Link
+                to="/commercialToHome"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                {" "}
+                <h3>طلب تعديل التعرفة من تجاري الى منزلي</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تعديل التعرفة من تجاري الى منزلي</h3>
+              </Link>
+            )}
             <span>
               طلب تغيير الاشتراك من تجاري إلى منزلي لضبط تكلفة الكهرباء وفقًا
               للاستخدام المنزلي.
@@ -92,13 +130,22 @@ const EservicesPage = () => {
             <img src={serv4} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/transferpoles"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب نقل الاعمدة و الشبكات المعارضة للبناء</h3>
-            </Link>
+            {userId ? (
+              <Link
+                to="/transferpoles"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                {" "}
+                <h3>طلب نقل الاعمدة و الشبكات المعارضة للبناء</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب نقل الاعمدة و الشبكات المعارضة للبناء</h3>
+              </Link>
+            )}
             <span>
               طلب نقل اعمدة الكهرباء المتعارضة مع عملية بناء ، أو الاعمدة التي
               تميل للسقوط و تشكل خطر
@@ -110,14 +157,23 @@ const EservicesPage = () => {
             <img src={serv5} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/weakElecProblem"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب معالجة ضعف التيار</h3>
-            </Link>
-
+            {" "}
+            {userId ? (
+              <Link
+                to="/weakElecProblem"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                {" "}
+                <h3>طلب معالجة ضعف التيار</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب معالجة ضعف التيار</h3>
+              </Link>
+            )}
             <span>
               طلب إصلاح وتعزيز قدرة التيار الكهربائي للتغلب على مشكلة ضعف التيار
               وضمان استقرار الكهرباء{" "}
@@ -129,13 +185,22 @@ const EservicesPage = () => {
             <img src={serv6} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/streetLighting"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب تركيب وحدة انارة للشارع</h3>
-            </Link>{" "}
+            {userId ? (
+              <Link
+                to="/streetLighting"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                {" "}
+                <h3>طلب تركيب وحدة انارة للشارع</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تركيب وحدة انارة للشارع</h3>
+              </Link>
+            )}
             <span>
               طلب تركيب وحدة إنارة مخصصة لتوفير الإضاءة اللازمة في الشوارع
               وتحسين الرؤية والسلامة للمارة
@@ -147,14 +212,21 @@ const EservicesPage = () => {
             <img src={serv7} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/maintenance"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب صيانة</h3>
-            </Link>
-
+            {userId ? (
+              <Link
+                to="/maintenance"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب صيانة</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب صيانة</h3>
+              </Link>
+            )}
             <span>
               طلب خدمة لإصلاح وصيانة أنظمة الكهرباء والمعدات للحفاظ على أداء
               موثوق وتجنب حدوث أعطال أو انقطاع في التيار الكهربائي.
@@ -166,14 +238,21 @@ const EservicesPage = () => {
             <img src={serv8} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/modifybeneficiarysdata"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب تعديل بيانات المستفيد</h3>
-            </Link>
-
+            {userId ? (
+              <Link
+                to="/modifybeneficiarysdata"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تعديل بيانات المستفيد</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تعديل بيانات المستفيد</h3>
+              </Link>
+            )}
             <span>
               طلب تحديث وتعديل المعلومات الشخصية للمستفيد من أجل تحديث البيانات
               وضمان توصيل الخدمات الكهربائية وفقًا للبيانات الصحيحة
@@ -185,13 +264,22 @@ const EservicesPage = () => {
             <img src={serv9} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/reduceInstallment"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب تخفيض أقساط ديون الكهرباء</h3>
-            </Link>
+            {userId ? (
+              <Link
+                to="/reduceInstallment"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                {" "}
+                <h3>طلب تخفيض أقساط ديون الكهرباء</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تخفيض أقساط ديون الكهرباء</h3>
+              </Link>
+            )}
             <span>
               طلب تقديم تسهيلات وتخفيض في مبالغ السداد المستحقة للديون
               الكهربائية لتمكين المستفيد من تسديد الديون بطريقة مرنة وميسرة.
@@ -203,14 +291,22 @@ const EservicesPage = () => {
             <img src={serv3} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/temporaryToPermanent"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب تعديل حالة الاشتراك من مؤقت الى دائم</h3>
-            </Link>
-
+            {userId ? (
+              <Link
+                to="/temporaryToPermanent"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                {" "}
+                <h3>طلب تعديل حالة الاشتراك من مؤقت الى دائم</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب تعديل حالة الاشتراك من مؤقت الى دائم</h3>
+              </Link>
+            )}
             <span>
               طلب تحويل حالة الاشتراك الكهربائي من وضع مؤقت إلى وضع دائم
             </span>
@@ -221,13 +317,22 @@ const EservicesPage = () => {
             <img src={serv10} alt="" width={65} height={90} />
           </div>
           <div className="service-desc">
-            <Link
-              to="/objection"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              {" "}
-              <h3>طلب اعتراض على تقدير بدل استهلاك خلال فترة عطل عداد</h3>
-            </Link>{" "}
+            {userId ? (
+              <Link
+                to="/objection"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                {" "}
+                <h3>طلب اعتراض على تقدير بدل استهلاك خلال فترة عطل عداد</h3>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <h3>طلب اعتراض على تقدير بدل استهلاك خلال فترة عطل عداد</h3>
+              </Link>
+            )}
             <span>
               طلب تصحيح التقدير المبني على استهلاك الكهرباء أثناء فترة عطل
               العداد لتجنب الفواتير المبالغ فيها

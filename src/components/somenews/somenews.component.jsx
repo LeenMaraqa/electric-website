@@ -14,7 +14,7 @@ const SomeNews = () => {
   const fetchNews = async () => {
     try {
       const response = await fetch(
-       "https://my.api.mockaroo.com/news.json?key=f4868e30"
+       "http://localhost:5000/api/advertisement"
 );
       const data = await response.json();
       setNews(data);
@@ -46,8 +46,8 @@ const SomeNews = () => {
             <img
               width={300}
                height={210}
-              src={newsItem.coverImage}
-              alt=""
+               src={ `data:image/png;base64,${newsItem.coverImage}`}
+               alt=""
             />
             <div className="title">
               <Link

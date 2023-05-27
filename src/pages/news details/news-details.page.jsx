@@ -1,38 +1,31 @@
 import React from "react";
 import Header from "../../components/header/header.component";
-import "./news-details.css"
-import { useParams } from 'react-router-dom';
-import { useState,useEffect } from "react";
+import "./news-details.css";
+import { useParams,useNavigate,generatePath } from "react-router-dom";
+import { useState, useEffect } from "react";
 const NewsDetails = ({ news }) => {
-  const { id } = useParams();
-  const [newsItem, setNewsItem] = useState(null);
-
+  // const [id, setId] = useState();
+  const navigate = useNavigate();
+  // const { id } = useParams();
+  // const [newsItem, setNewsItem] = useState(null);
+console.log("news",news);
   useEffect(() => {
-    fetchNewsItem();
-  }, [id]);
+    // news.ID && navigate(generatePath("/view-news/:id", {  news.id }));
+  }, [ news.ID]);
 
-  const fetchNewsItem = async () => {
-    try {
-      const response = await fetch(
-"https://my.api.mockaroo.com/news/${id}.json?key=3f67f180");
-      const data = await response.json();
-      setNewsItem(data);
-    } catch (error) {
-      console.error('Error fetching news item:', error);
-    }
-  };
-
-  if (!newsItem) {
-    return <div>Loading...</div>;
-  }
+  
   return (
     <div>
       <Header />
       <div className="new-details">
         {" "}
-        <h2 className="new">{news.title}</h2>
-        <img className="new-image" src={news.image} alt={news.title} />
-        <div className="new">{news.body}</div>
+        <div className="new-title">{news.title}</div>
+        <div className="new-body">{news.body}</div>
+        <img
+          className="new-image"
+          src={`data:image/png;base64,${news.image}`}
+          alt={news.title}
+        />
       </div>
     </div>
   );

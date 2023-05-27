@@ -37,7 +37,7 @@ const SidebarMenu = () => {
           <Users size={24} color="#f4f2f0" weight="fill" />
         </span>
 
-        <span>
+        <span >
           <Customers />
         </span>
       </div>
@@ -45,7 +45,7 @@ const SidebarMenu = () => {
         <span>
           <FileText size={24} color="#f4f2f0" weight="fill" />
         </span>
-        <span>
+        <span >
           {" "}
           <Applications />
         </span>

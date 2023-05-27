@@ -44,8 +44,8 @@ const AddEmp = () => {
       ...prevState,
       phoneNum: value,
     }));
-    if (value.length !== 9 || !value.startsWith("5")) {
-      setPhoneNumError("يجب ان يتكون رقم الهاتف من 9 خانات و يبدأ ب 5");
+    if (value.length !== 10) {
+      setPhoneNumError("يجب ان يتكون رقم الهاتف من 10 خانات ");
     } else {
       setPhoneNumError("");
     }
@@ -70,11 +70,11 @@ const AddEmp = () => {
       ...prevState,
       password: value,
     }));
-    const strongRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!strongRegex.test(value) || value.length < 8) {
+    // const strongRegex =
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if ( value.length < 8) {
       setPasswordError(
-        "يرجى ملاحظة أن كلمة المرور يجب أن تتكون من 8 أحرف على الأقل وتشمل حروفاً كبيرة وصغيرة وأرقاماً ورموزاً "
+        "يرجى ملاحظة أن كلمة المرور يجب أن تتكون من 8 أحرف  "
       );
     } else {
       setPasswordError("");
@@ -179,7 +179,7 @@ const AddEmp = () => {
               />
               {phoneNumError && (
                 <p className="validation_message">
-                  يجب ان يتكون رقم الهاتف من 9 خانات و يبدأ ب 5
+                  يجب ان يتكون رقم الهاتف من 10 خانات
                 </p>
               )}
             </div>

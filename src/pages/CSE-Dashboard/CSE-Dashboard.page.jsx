@@ -60,7 +60,7 @@ const CSE_Dashboard = () => {
       <div className="content">
         {searchResults.length > 0 ? (
           <div className="info searchResult">
-            <table>
+            <table >
               <thead>
                 <tr>
                   <th>رقم الطلب</th>
@@ -89,7 +89,7 @@ const CSE_Dashboard = () => {
                     <td>{result.createdAt}</td>
                     <td>
                       {" "}
-                      <MoreDetails
+                      {/* <MoreDetails
                         // requestId={item.RequestID}
                         customerName={result.service.customer.CustomerName}
                         serviceId={result.service.ServiceID}
@@ -104,7 +104,51 @@ const CSE_Dashboard = () => {
                         locationImage={user1}
                         electricianName={"test"}
                         electricianPhoneNumber={"151848"}
-                      />
+                      /> */}
+                      <MoreDetails
+                      requestId={result.RequestID}
+                      customerName={result.service.customer.CustomerName}
+                      serviceId={result.service.ServiceID}
+                      requestTypeName={result.request_type.TypeName}
+                      phoneNumber={result.service.customer.PhoneNumber}
+                      address={result.service.Address}
+                      reason={result.Reason}
+                      beneficiaryIDImage={
+                        result.request_type.TypeName === "تعديل بيانات المستفيد"
+                          ? `data:image/jpg;base64,${result["tenant-datum"].TenantImage}`
+                          : "no image"
+                      }
+                      userIDImage={
+                        result.request_type.TypeName === "تعديل بيانات المستفيد"
+                          ? `data:image/jpg;base64,${result["tenant-datum"].CustomerImage}`
+                          : "no image"
+                      }
+                      beneficiaryName={
+                        result.request_type.TypeName === "تعديل بيانات المستفيد"
+                          ? `${result["tenant-datum"].TenantName}`
+                          : "no data"
+                      }
+                      footPrint={
+                        result.request_type.TypeName === "نقل الاعمدة المعارضة"
+                          ? `data:image/jpg;base64,${result.TransferringPole.Footprint}`
+                          : "no image"
+                      }
+                      locationImage={
+                        result.request_type.TypeName === "نقل الاعمدة المعارضة"
+                          ? `data:image/jpg;base64,${result.TransferringPole.LocationOfPole}`
+                          : "no image"
+                      }
+                      // electricianName={
+                      //   result.request_type.TypeName === "تحويل من مؤقت الى دائم"
+                      //     ? `${result["subscription-status"].ElectricianName}`
+                      //     : "no data"
+                      // }
+                      // electricianPhoneNumber={
+                      //   result.request_type.TypeName === "تحويل من مؤقت الى دائم"
+                      //     ? `${result["subscription-status"].ElectricianNo}`
+                      //     : "no data"
+                      // }
+                    />
                     </td>{" "}
                   </tr>
                 ))}
