@@ -20,7 +20,7 @@ const AddNews = () => {
   const userId = localStorage.getItem("userId");
 
   const [newsData, setNewsData] = useState({
-    empNum: "44",
+    empNum: userId,
     title: "",
     coverImage: null,
     image: null,

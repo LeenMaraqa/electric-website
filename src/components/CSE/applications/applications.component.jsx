@@ -5,9 +5,7 @@ import "../../../pages/CSE-Dashboard/CSE-Dashboard.css";
 import MoreDetails from "../more details/moreDetails.component";
 import user1 from "../../../images/user1.png";
 import "./applications.css";
-
 const { Option } = Select;
-
 const Applications = () => {
   const [applications, setApplications] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,7 +33,7 @@ const Applications = () => {
     console.log("new status:", newStatus);
     console.log("serviceId:", serviceId);
     console.log("requestType:", requestType);
-  
+
     try {
       const response = await fetch(`http://localhost:5000/api/request`, {
         method: "PUT",
@@ -50,26 +48,19 @@ const Applications = () => {
           empNum: empNum,
         }),
       });
-      
-      console.log("response", response);
-      
-      const updatedApplication = await response.json();
-      console.log("updatedApplication", updatedApplication);
-  
-      setApplications(
-        applications.map((app) =>
-          app.RequestID === id
-            ? { ...app, request_status: { StatusName: newStatus } }
-            : app
-        )
+
+      const newApplications  = applications.map((app) =>
+        app.RequestID === id
+          ? { ...app, request_status: { StatusName: newStatus } }
+          : app
       );
-  
-      console.log("updated applications", applications);
+      setApplications(newApplications );
+      console.log("newApplications ", applications);
     } catch (error) {
       console.error(error);
     }
   };
-  
+
   const handlePageChange = (page, pageSize) => {
     setCurrentPage(page);
     setPageSize(pageSize);
@@ -89,12 +80,13 @@ const Applications = () => {
 
     {
       title: "نوع الطلب",
+      className: "th-app",
       dataIndex: "request_type",
       key: "request_type",
       render: (requestType) => requestType && requestType.TypeName,
     },
     {
-      title: "رقم هاتف مقدم الطلب",
+      title: "رقم الهاتف  ",
       dataIndex: "ApplicantPhoneNumber",
       key: "ApplicantPhoneNumber",
     },
@@ -109,27 +101,23 @@ const Applications = () => {
       key: "request_status",
 
       render: (status, record) => (
-        // <Select
-        //   value={status.StatusName}
-        //   onChange={(newStatus) =>
-        //     handleStatusUpdate(record.RequestID, newStatus)
-        //   }
-        // >
         <Select
-        value={status.StatusName}
-        onChange={(newStatus) =>
-          handleStatusUpdate(
-            record.RequestID,
-            newStatus,
-            record.service.ServiceID,
-            record.request_type.TypeName
-          )
-        }
-      >
+          className="app-status"
+          value={status.StatusName}
+          onChange={(newStatus) =>
+            handleStatusUpdate(
+              record.RequestID,
+              newStatus,
+              record.service.ServiceID,
+              record.request_type.TypeName
+            )
+          }
+        >
           <Option value="طلب جديد">طلب جديد</Option>
           <Option value="قيد المراجعة">قيد المراجعة</Option>
           <Option value="مقبول">مقبول</Option>
           <Option value="مرفوض">مرفوض</Option>{" "}
+          <Option value="منتهي">منتهي</Option>{" "}
         </Select>
       ),
     },

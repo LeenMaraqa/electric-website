@@ -158,7 +158,8 @@ tbody tr:last-of-type {
 div.info {
   /* position: relative; */
   /* right: 80px; */
-  bottom: 110px;
+  bottom: 220px;
+  /* top: 100px; */
   /* overflow-x: scroll; */
   /* overflow-y: scroll;   */
   /* overflow: scroll;   */

@@ -26,7 +26,8 @@ const CSE_Dashboard = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    console.log("response",response);
+    console.log("data",data);
     setSearchResults(data);
   };
   return (
@@ -113,6 +114,22 @@ const CSE_Dashboard = () => {
                       phoneNumber={result.service.customer.PhoneNumber}
                       address={result.service.Address}
                       reason={result.Reason}
+                      // beneficiaryIDImage={
+                      //   record.request_type.TypeName === "تعديل بيانات المستفيد"
+                      //     ? `data:image/jpg;base64,${record["tenant-datum"].TenantImage}`
+                      //     : "no image"
+                      // }
+                      // userIDImage={
+                      //   record.request_type.TypeName === "تعديل بيانات المستفيد"
+                      //     ? `data:image/jpg;base64,${record["tenant-datum"].CustomerImage}`
+                      //     : "no image"
+                      // }
+                      // beneficiaryName={
+                      //   record.request_type.TypeName === "تعديل بيانات المستفيد"
+                      //     ? `${record["tenant-datum"].TenantName}`
+                      //     : "no data"
+                      // }
+                      
                       beneficiaryIDImage={
                         result.request_type.TypeName === "تعديل بيانات المستفيد"
                           ? `data:image/jpg;base64,${result["tenant-datum"].TenantImage}`

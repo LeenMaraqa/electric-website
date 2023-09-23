@@ -17,7 +17,6 @@ import TemporaryToPermanent from "./pages/application/temporary to permanent/tem
 import ModifyData from "./pages/application/modify-beneficiarys-data/modify-data.page";
 import TransferPoles from "./pages/application/transfer poles/transfer-poles.page";
 import CSE_Dashboard from "./pages/CSE-Dashboard/CSE-Dashboard.page";
-import Customer_Dashboard from "./pages/customer-Dashboard/customer-Dashboard.page";
 import View_Subscription from "./components/Customer/view_subscription/view-subscription.component";
 import View_Application from "./components/Customer/view-applications/view-application.component";
 import Admin_Dashboard from "./pages/Admin-Dashboard/admin-Dashboard.paje";

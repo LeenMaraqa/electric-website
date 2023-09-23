@@ -16,7 +16,7 @@ const AddReport = () => {
   };
   const userId = localStorage.getItem("userId");
   const [reportData, setReportData] = useState({
-    empNum: "44",//userId, // ***/
+    empNum: userId, 
     title: "",
     coverImage: null,
     pdfReport: null,
